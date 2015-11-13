@@ -1,0 +1,70 @@
+<div>
+    <h2>Plans</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="plan.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Plan</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>SolutionName</th>
+                    <th>AgreedGTMDate</th>
+                    <th>RevenueCommitment</th>
+                    <th>DealsRequired</th>
+                    <th>ProposalDate</th>
+                    <th>IndustrySegment</th>
+                    <th>partner</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="plan in plans track by plan.id">
+                    <td><a ui-sref="plan.detail({id:plan.id})">{{plan.id}}</a></td>
+                    <td>{{plan.solutionName}}</td>
+                        <td>{{plan.agreedGTMDate | date:'mediumDate'}}</td>
+                    <td>{{plan.revenueCommitment}}</td>
+                    <td>{{plan.dealsRequired}}</td>
+                        <td>{{plan.proposalDate | date:'mediumDate'}}</td>
+                    <td translate="{{'gtmpaApp.IndustrySegmentEnum.' + plan.industrySegment}}">{{plan.industrySegment}}</td>
+                    <td>
+                        <a ui-sref="partner.detail({id:plan.partner.id})">{{plan.partner.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="plan.detail({id:plan.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="plan.edit({id:plan.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="plan.delete({id:plan.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a href="#">&lt;</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPlanLabel">Create or edit a Plan</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="plan.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_solutionName">SolutionName</label>
+            <input type="text" class="form-control" name="solutionName" id="field_solutionName"
+                    ng-model="plan.solutionName"
+                    required ng-minlength="3" ng-maxlength="30" />
+            <div ng-show="editForm.solutionName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.solutionName.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.solutionName.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.solutionName.$error.maxlength" translate-value-max="30">
+                    This field cannot be longer than 30 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_agreedGTMDate">AgreedGTMDate</label>
+            <input type="date" class="form-control" name="agreedGTMDate" id="field_agreedGTMDate"
+                    ng-model="plan.agreedGTMDate"
+                    required />
+            <div ng-show="editForm.agreedGTMDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.agreedGTMDate.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_revenueCommitment">RevenueCommitment</label>
+            <input type="number" class="form-control" name="revenueCommitment" id="field_revenueCommitment"
+                    ng-model="plan.revenueCommitment"
+                    required />
+            <div ng-show="editForm.revenueCommitment.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.revenueCommitment.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.revenueCommitment.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_dealsRequired">DealsRequired</label>
+            <input type="number" class="form-control" name="dealsRequired" id="field_dealsRequired"
+                    ng-model="plan.dealsRequired"
+                    required />
+            <div ng-show="editForm.dealsRequired.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dealsRequired.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dealsRequired.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_proposalDate">ProposalDate</label>
+            <input type="date" class="form-control" name="proposalDate" id="field_proposalDate"
+                    ng-model="plan.proposalDate"
+                    required />
+            <div ng-show="editForm.proposalDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.proposalDate.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_industrySegment">IndustrySegment</label>
+            <select class="form-control" name="industrySegment" ng-model="plan.industrySegment" id="field_industrySegment" required>
+                <option value="Banking">Banking</option>
+                <option value="Government">Government</option>
+                <option value="Health">Health</option>
+                <option value="Retail">Retail</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Financial_Services">Financial_Services</option>
+                <option value="Commerce">Commerce</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Telco">Telco</option>
+                <option value="Cross_Industry">Cross_Industry</option>
+            </select>
+            <div ng-show="editForm.industrySegment.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.industrySegment.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_partner">partner</label>
+            <select class="form-control" id="field_partner" name="partner" ng-model="plan.partner" ng-options="partner as partner.name for partner in partners track by partner.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

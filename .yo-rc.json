@@ -1,0 +1,22 @@
+{
+  "generator-jhipster": {
+    "baseName": "gtmpa",
+    "packageName": "com.ibm.gtmpa",
+    "packageFolder": "com/ibm/gtmpa",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "no",
+    "useSass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "enableTranslation": false,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "f45c0b29d005f54b85064c76cc4e605fdc04c773",
+    "testFrameworks": []
+  }
+}
