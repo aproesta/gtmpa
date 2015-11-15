@@ -13,10 +13,14 @@
                 </div>
 
                 <div class="alert alert-warning" ng-switch-when="false">
-                    Please Sign In.
-                    <button type="button" class="btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Sign In
-                    </button>
+                    Please Sign In
+
+                    <a ui-sref="login">
+
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Sign In
+                        </button>
+                    </a>
                 </div>
 
                 <div ng-switch-when="false">
