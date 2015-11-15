@@ -13,4 +13,20 @@ angular.module('gtmpaApp')
         });
         $scope.$on('$destroy', unsubscribe);
 
+        /* config object */
+        $scope.uiConfig = {
+            calendar:{
+                height: 450,
+                editable: true,
+                header:{
+                    left: 'title',
+                    center: '',
+                    right: 'today prev,next'
+                },
+                dayClick: $scope.alertEventOnClick,
+                eventDrop: $scope.alertOnDrop,
+                eventResize: $scope.alertOnResize
+            }
+        };
+
     });

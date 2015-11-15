@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('gtmpaApp', ['LocalStorageModule', 
+angular.module('gtmpaApp', ['LocalStorageModule',
                'ui.bootstrap', // for modal dialogs
-    'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll', 'angular-loading-bar'])
+    'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll', 'angular-loading-bar',
+    'ui.calendar'])
 
     .run(function ($rootScope, $location, $window, $http, $state,  Auth, Principal, ENV, VERSION) {
-        
+
         $rootScope.ENV = ENV;
         $rootScope.VERSION = VERSION;
         $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
@@ -15,7 +16,7 @@ angular.module('gtmpaApp', ['LocalStorageModule',
             if (Principal.isIdentityResolved()) {
                 Auth.authorize();
             }
-            
+
         });
 
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
@@ -36,7 +37,7 @@ angular.module('gtmpaApp', ['LocalStorageModule',
             }
             $window.document.title = titleKey;
         });
-        
+
         $rootScope.back = function() {
             // If previous state is 'activate' or do not exist go to 'home'
             if ($rootScope.previousStateName === 'activate' || $state.get($rootScope.previousStateName) === null) {
@@ -78,7 +79,7 @@ angular.module('gtmpaApp', ['LocalStorageModule',
         $httpProvider.interceptors.push('errorHandlerInterceptor');
         $httpProvider.interceptors.push('authExpiredInterceptor');
         $httpProvider.interceptors.push('notificationInterceptor');
-        
+
     })
     .config(['$urlMatcherFactoryProvider', function($urlMatcherFactory) {
         $urlMatcherFactory.type('boolean', {
