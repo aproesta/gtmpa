@@ -1,5 +1,5 @@
 <div>
-    <h2>Plans</h2>
+    <h2>Go To Market Plans</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
@@ -43,6 +43,11 @@
                                 ui-sref="plan.detail({id:plan.id})"
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="plan.calendar({id:plan.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-calendar"></span>&nbsp;<span> Calendar</span>
                         </button>
                         <button type="submit"
                                 ui-sref="plan.edit({id:plan.id})"

@@ -38,6 +38,25 @@ angular.module('gtmpaApp')
                     }]
                 }
             })
+            .state('plan.calendar', {
+                parent: 'plan',
+                url: '/{id}/calendar',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'Plan'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/plan/plan-calendar.html',
+                        controller: 'PlanCalendarController'
+                    }
+                },
+                resolve: {
+                    entity: ['$stateParams', 'Plan', function($stateParams, Plan) {
+                        return Plan.get({id : $stateParams.id});
+                    }]
+                }
+            })
             .state('plan.new', {
                 parent: 'plan',
                 url: '/new',
