@@ -1,0 +1,66 @@
+<div>
+    <h2>Actions</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="action.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Action</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>LogDate</th>
+                    <th>Description</th>
+                    <th>ActionItems</th>
+                    <th>NextActionDate</th>
+                    <th>plan</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="action in actions track by action.id">
+                    <td><a ui-sref="action.detail({id:action.id})">{{action.id}}</a></td>
+                        <td>{{action.logDate | date:'mediumDate'}}</td>
+                    <td>{{action.description}}</td>
+                    <td>{{action.actionItems}}</td>
+                        <td>{{action.nextActionDate | date:'mediumDate'}}</td>
+                    <td>
+                        <a ui-sref="plan.detail({id:action.plan.id})">{{action.plan.solutionName}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="action.detail({id:action.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="action.edit({id:action.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="action.delete({id:action.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a href="#">&lt;</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

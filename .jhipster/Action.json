@@ -1,0 +1,45 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "plan",
+            "otherEntityName": "plan",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "solutionName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "logDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "5"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "actionItems",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "nextActionDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20151115003017",
+    "dto": "no",
+    "pagination": "pager"
+}

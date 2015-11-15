@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span>Action</span> {{action.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>LogDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{action.logDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{action.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ActionItems</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{action.actionItems}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>NextActionDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{action.nextActionDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>plan</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="plan.detail({id:action.plan.id})">{{action.plan.solutionName}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
