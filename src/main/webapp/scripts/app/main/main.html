@@ -1,15 +1,17 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-12">
-            <img class="img-responsive img-rounded" src="assets/images/GBP_logo.jpg">
+        <div class="col-md-3">
+            <img class="img-responsive img-rounded" src="assets/images/ibm_cloud.png">
         </div>
-        <div class="col-md-12">
-            <h1>Welcome, IBM Business Partners</h1>
+        <div class="col-md-9">
+            <h1>IBM Global Business Partners</h1>
             <p class="lead">IBM oneChannel Go To Market Plan Management</p>
 
-            <div ng-switch="isAuthenticated()">
+            <div ng-switch="isAuthenticated()" class="col-md-8">
                 <div class="alert alert-success" ng-switch-when="true">
                     You are logged in as user "{{account.login}}"<br>
+                </div>
+                <div class="alert alert-info" ng-switch-when="true">
                     Work with your Plans.
                     <a ui-sref="plan">
                         <button type="button" class="btn btn-default btn-primary">
@@ -18,7 +20,7 @@
                     </a>
                 </div>
 
-                <div class="alert alert-warning" ng-switch-when="false">
+                <div class="alert alert-info" ng-switch-when="false">
                     Please Sign In
 
                     <a ui-sref="login">
@@ -32,21 +34,22 @@
                 </div>
 
             </div>
+            <div class="col-md-12">
+                <p>
+                    This application allows you to:
+                </p>
 
-            <p>
-                This application allows you to:
-            </p>
+                <ul>
+                    <li>Create and manage your Go To Market Plans</li>
+                    <li>Visualise and manage key milestones</li>
+                    <li>Track important actions</li>
+                    <li>Collaborate with IBM through the GTM process</li>
+                </ul>
 
-            <ul>
-                <li>Create and manage your Go To Market Plans</li>
-                <li>Visualise and manage key milestones</li>
-                <li>Track important actions</li>
-                <li>Collaborate with IBM through the GTM process</li>
-            </ul>
-
-            <p>
-             <span>For more information please email </span>&nbsp;<a href="mailto://support@ibm.com" target="_blank">IBM</a>
-            </p>
+                <p>
+                 <span>For more information please email </span>&nbsp;<a href="mailto://support@ibm.com" target="_blank">IBM</a>
+                </p>
+            </div>
         </div>
     </div>
 </div>
