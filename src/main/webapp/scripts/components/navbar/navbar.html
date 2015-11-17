@@ -93,14 +93,18 @@
         </div>
         <div class="container" ng-switch="isAuthenticated()">
             <div class="collapse navbar-collapse" ng-switch-when="true">
-                <button class="btn btn-default btn-lg btn-link" style="font-size:36px; data-toggle="tooltip" title="Open Last Plan">
-                    <span class="glyphicon glyphicon-list-alt"></span>
-                </button>
-                <span class="badge badge-notify">1</span>
-                <button class="btn btn-default btn-lg btn-link" style="font-size:36px;" data-toggle="tooltip" title="You have 3 outstanding actions">
-                    <span class="glyphicon glyphicon-tasks"></span>
-                </button>
-                <span class="badge badge-notify">3</span>
+                <a ui-sref="plan">
+                    <button class="btn btn-default btn-lg btn-link" style="font-size:36px; data-toggle="tooltip" title="Open Last Plan">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </button>
+                </a>
+                <a ui-sref="action">
+                    <span class="badge badge-notify">1</span>
+                    <button class="btn btn-default btn-lg btn-link" style="font-size:36px;" data-toggle="tooltip" title="You have 3 outstanding actions">
+                        <span class="glyphicon glyphicon-tasks"></span>
+                    </button>
+                    <span class="badge badge-notify">3</span>
+                </a>
             </div>
         </div>
     </div>
