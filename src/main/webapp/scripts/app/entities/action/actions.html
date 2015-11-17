@@ -16,11 +16,10 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>LogDate</th>
-                    <th>Description</th>
-                    <th>ActionItems</th>
-                    <th>NextActionDate</th>
-                    <th>plan</th>
+                    <th>Date Created</th>
+                    <th>Action</th>
+                    <th>Due Date</th>
+                    <th>Plan</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,7 +27,6 @@
                 <tr ng-repeat="action in actions track by action.id">
                     <td><a ui-sref="action.detail({id:action.id})">{{action.id}}</a></td>
                         <td>{{action.logDate | date:'mediumDate'}}</td>
-                    <td>{{action.description}}</td>
                     <td>{{action.actionItems}}</td>
                         <td>{{action.nextActionDate | date:'mediumDate'}}</td>
                     <td>

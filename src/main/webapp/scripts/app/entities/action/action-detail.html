@@ -12,7 +12,7 @@
             <tbody>
             <tr>
                 <td>
-                    <span>LogDate</span>
+                    <span>Date Created</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{action.logDate | date:'mediumDate'}}</span>
@@ -20,15 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Description</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{action.description}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>ActionItems</span>
+                    <span>Action</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{action.actionItems}}</span>
@@ -36,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>NextActionDate</span>
+                    <span>Due Date</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{action.nextActionDate | date:'mediumDate'}}</span>
@@ -44,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>plan</span>
+                    <span>Plan</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="plan.detail({id:action.plan.id})">{{action.plan.solutionName}}</a>
