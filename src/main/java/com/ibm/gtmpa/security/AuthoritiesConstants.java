@@ -11,6 +11,11 @@ public final class AuthoritiesConstants {
 
     public static final String ANONYMOUS = "ROLE_ANONYMOUS";
 
+    public static final String BP = "ROLE_BP";
+    public static final String BP_MANAGER = "ROLE_BP_MANAGER";
+    public static final String CHANNEL_MANAGER = "ROLE_CHANNEL_MANAGER";
+    public static final String BUS_OPS = "ROLE_BUS_OPS";
+
     private AuthoritiesConstants() {
     }
 }

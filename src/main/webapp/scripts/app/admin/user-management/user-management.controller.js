@@ -3,7 +3,7 @@
 angular.module('gtmpaApp')
     .controller('UserManagementController', function ($scope, User, ParseLinks) {
         $scope.users = [];
-        $scope.authorities = ["ROLE_USER", "ROLE_ADMIN"];
+        $scope.authorities = ["ROLE_USER", "ROLE_ADMIN", "ROLE_BP", "ROLE_BP_MANAGER", "ROLE_CHANNEL_MANAGER", "ROLE_BUS_OPS"];
 
         $scope.page = 0;
         $scope.loadAll = function () {
