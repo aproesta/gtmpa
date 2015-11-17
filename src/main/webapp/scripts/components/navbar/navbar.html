@@ -28,16 +28,12 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li has-authority="ROLE_ADMIN" ui-sref-active="active" ><a ui-sref="partner" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
+                        <li has-any-authority="ROLE_ADMIN,ROLE_BUS_OPS" ui-sref-active="active" ><a ui-sref="partner" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
                         &#xA0;<span >Partners</span></a></li>
-                        <li has-authority="ROLE_BUS_OPS" ui-sref-active="active" ><a ui-sref="partner" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
-                            &#xA0;<span >Partners</span></a></li>
                         <li ui-sref-active="active" ><a ui-sref="plan" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-list-alt"></span>
                         &#xA0;<span >Plans</span></a></li>
-                        <li has-authority="ROLE_ADMIN" ui-sref-active="active" ><a ui-sref="rule" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-flash"></span>
+                        <li has-any-authority="ROLE_ADMIN,ROLE_BUS_OPS" ui-sref-active="active" ><a ui-sref="rule" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-flash"></span>
                         &#xA0;<span >Rules</span></a></li>
-                        <li has-authority="ROLE_BUS_OPS" ui-sref-active="active" ><a ui-sref="rule" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-flash"></span>
-                            &#xA0;<span >Rules</span></a></li>
                         <li ui-sref-active="active" ><a ui-sref="action" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-tasks"></span>
                         &#xA0;<span >Actions</span></a></li>
                         <!-- JHipster will add entities to the menu here -->

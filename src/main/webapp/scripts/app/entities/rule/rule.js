@@ -7,7 +7,7 @@ angular.module('gtmpaApp')
                 parent: 'entity',
                 url: '/rules',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN','ROLE_BUS_OPS'],
                     pageTitle: 'Rules'
                 },
                 views: {
@@ -23,7 +23,7 @@ angular.module('gtmpaApp')
                 parent: 'entity',
                 url: '/rule/{id}',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN','ROLE_BUS_OPS'],
                     pageTitle: 'Rule'
                 },
                 views: {
@@ -42,7 +42,7 @@ angular.module('gtmpaApp')
                 parent: 'rule',
                 url: '/new',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN','ROLE_BUS_OPS'],
                 },
                 onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
                     $modal.open({
@@ -70,7 +70,7 @@ angular.module('gtmpaApp')
                 parent: 'rule',
                 url: '/{id}/edit',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN','ROLE_BUS_OPS'],
                 },
                 onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
                     $modal.open({
@@ -93,7 +93,7 @@ angular.module('gtmpaApp')
                 parent: 'rule',
                 url: '/{id}/delete',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                 },
                 onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
                     $modal.open({
