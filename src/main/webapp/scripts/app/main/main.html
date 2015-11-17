@@ -1,11 +1,11 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3" ng-hide="isAuthenticated()">
             <img class="img-responsive img-rounded" src="assets/images/ibm_cloud.png">
         </div>
-        <div class="col-md-9">
-            <h1>IBM Global Business Partners</h1>
-            <p class="lead">IBM oneChannel Go To Market Plan Management</p>
+        <div class="col-md-6">
+            <h2>IBM Global Business Partners</h2>
+            <p class="lead"><small>IBM oneChannel Go To Market Plan Management</small></p>
 
             <div ng-switch="isAuthenticated()" class="col-md-8">
                 <div class="alert alert-success" ng-switch-when="true">
@@ -34,7 +34,7 @@
                 </div>
 
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12"  ng-hide="isAuthenticated()">
                 <p>
                     This application allows you to:
                 </p>
@@ -50,6 +50,18 @@
                  <span>For more information please email </span>&nbsp;<a href="mailto://support@ibm.com" target="_blank">IBM</a>
                 </p>
             </div>
+        </div>
+        <div class="col-md-3" ng-hide="isAuthenticated()">
+            <br>
+            <img class="img-responsive" src="assets/images/woman_ipad.jpg">
+        </div>
+        <div class="col-md-3" ng-hide="!isAuthenticated()">
+            <img class="img-responsive img-rounded" src="assets/images/chart1.jpg"><br>
+            <img class="img-responsive img-rounded" src="assets/images/chart2.jpg">
+        </div>
+        <div class="col-md-3" ng-hide="!isAuthenticated()">
+            <img class="img-responsive img-rounded" src="assets/images/chart3.png"> <br>
+            <img class="img-responsive img-rounded" src="assets/images/chart4.jpg">
         </div>
     </div>
 </div>
