@@ -25,6 +25,22 @@ public class Partner implements Serializable {
     @Column(name = "name", length = 20, nullable = false)
     private String name;
 
+    @NotNull
+    @Size(min = 5, max = 40)
+    @Column(name = "contactname", length = 40, nullable = false)
+    private String contactName;
+
+    @NotNull
+    @Size(min = 5, max = 40)
+    @Column(name = "contactemail", length = 40, nullable = false)
+    private String contactEmail;
+
+
+    @NotNull
+    @Size(min = 4, max = 10)
+    @Column(name = "pin", length = 10, nullable = false)
+    private String pin;
+
     public Long getId() {
         return id;
     }
@@ -39,6 +55,30 @@ public class Partner implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+    public String getContactEmail() {
+        return contactEmail;
     }
 
     @Override
@@ -67,6 +107,9 @@ public class Partner implements Serializable {
         return "Partner{" +
             "id=" + id +
             ", name='" + name + "'" +
+            ", contactName='" + contactName + "'" +
+            ", contactEmail='" + contactEmail + "'" +
+            ", pin='" + pin + "'" +
             '}';
     }
 }
