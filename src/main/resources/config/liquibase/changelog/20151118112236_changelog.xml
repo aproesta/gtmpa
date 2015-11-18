@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-1">
+        <addColumn tableName="partner">
+            <column name="contactemail" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-2">
+        <addColumn tableName="partner">
+            <column name="contactname" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-3">
+        <addColumn tableName="partner">
+            <column name="pin" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-4">
+        <dropSequence sequenceName="action_id_seq"/>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-5">
+        <dropSequence sequenceName="jhi_persistent_audit_event_event_id_seq"/>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-6">
+        <dropSequence sequenceName="jhi_user_id_seq"/>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-7">
+        <dropSequence sequenceName="partner_id_seq"/>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-8">
+        <dropSequence sequenceName="plan_id_seq"/>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-9">
+        <dropSequence sequenceName="rule_id_seq"/>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447845818949-10">
+        <addNotNullConstraint columnDataType="date" columnName="next_action_date" tableName="action"/>
+    </changeSet>
+</databaseChangeLog>
