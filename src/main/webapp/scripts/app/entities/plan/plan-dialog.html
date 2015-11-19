@@ -14,7 +14,7 @@
                     ng-model="plan.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_solutionName">SolutionName</label>
+            <label for="field_solutionName">Solution Name</label>
             <input type="text" class="form-control" name="solutionName" id="field_solutionName"
                     ng-model="plan.solutionName"
                     required ng-minlength="3" ng-maxlength="30" />
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="field_agreedGTMDate">AgreedGTMDate</label>
+            <label for="field_agreedGTMDate">Agreed GTM Date</label>
             <input type="date" class="form-control" name="agreedGTMDate" id="field_agreedGTMDate"
                     ng-model="plan.agreedGTMDate"
                     required />
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="field_revenueCommitment">RevenueCommitment</label>
+            <label for="field_revenueCommitment">Revenue Commitment</label>
             <input type="number" class="form-control" name="revenueCommitment" id="field_revenueCommitment"
                     ng-model="plan.revenueCommitment"
                     required />
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="field_dealsRequired">DealsRequired</label>
+            <label for="field_dealsRequired">Deals Required</label>
             <input type="number" class="form-control" name="dealsRequired" id="field_dealsRequired"
                     ng-model="plan.dealsRequired"
                     required />
@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="field_proposalDate">ProposalDate</label>
+            <label for="field_proposalDate">Proposal Date</label>
             <input type="date" class="form-control" name="proposalDate" id="field_proposalDate"
                     ng-model="plan.proposalDate"
                     required />
@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="field_industrySegment">IndustrySegment</label>
+            <label for="field_industrySegment">Industry Segment</label>
             <select class="form-control" name="industrySegment" ng-model="plan.industrySegment" id="field_industrySegment" required>
                 <option value="Banking">Banking</option>
                 <option value="Government">Government</option>
@@ -113,7 +113,7 @@
         </div>
 
         <div class="form-group">
-            <label for="field_partner">partner</label>
+            <label for="field_partner">Partner</label>
             <select class="form-control" id="field_partner" name="partner" ng-model="plan.partner" ng-options="partner as partner.name for partner in partners track by partner.id">
                 <option value=""></option>
             </select>

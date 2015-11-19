@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-1">
+        <addColumn tableName="plan">
+            <column name="campaignplandate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-2">
+        <addColumn tableName="plan">
+            <column name="completedate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-3">
+        <addColumn tableName="plan">
+            <column name="initialdiscussiondate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-4">
+        <addColumn tableName="plan">
+            <column name="marketingcollateraldate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-5">
+        <addColumn tableName="plan">
+            <column name="marketingplandate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-6">
+        <addColumn tableName="plan">
+            <column name="presalescompetencydate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-7">
+        <addColumn tableName="plan">
+            <column name="salescompetencydate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-8">
+        <addColumn tableName="plan">
+            <column name="solutionarchitecteddate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-9">
+        <addColumn tableName="plan">
+            <column name="solutioncollateraldate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-10">
+        <addColumn tableName="plan">
+            <column name="solutioncosteddate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-11">
+        <addColumn tableName="plan">
+            <column name="technicalcompetencydate" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="arthurproestakis (generated)" id="1447913025196-12">
+        <addColumn tableName="plan">
+            <column name="status" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

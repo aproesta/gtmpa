@@ -119,6 +119,7 @@ private static final IndustrySegmentEnum DEFAULT_INDUSTRY_SEGMENT = IndustrySegm
         assertThat(testPlan.getDealsRequired()).isEqualTo(DEFAULT_DEALS_REQUIRED);
         assertThat(testPlan.getProposalDate()).isEqualTo(DEFAULT_PROPOSAL_DATE);
         assertThat(testPlan.getIndustrySegment()).isEqualTo(DEFAULT_INDUSTRY_SEGMENT);
+        assertThat(testPlan.getStatus()).isEqualTo(Plan.INITIAL_STATUS);
     }
 
     @Test

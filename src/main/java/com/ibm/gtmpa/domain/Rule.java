@@ -1,12 +1,18 @@
 package com.ibm.gtmpa.domain;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A Rule.
@@ -16,105 +22,101 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Rule implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+	@NotNull
+	@Column(name = "name", nullable = false)
+	private String name;
 
-    @NotNull
-    @Column(name = "field_spec", nullable = false)
-    private String fieldSpec;
+	@NotNull
+	@Column(name = "field_spec", nullable = false)
+	private String fieldSpec;
 
-    @NotNull
-    @Column(name = "rule", nullable = false)
-    private String rule;
+	@NotNull
+	@Column(name = "rule", nullable = false)
+	private String rule;
 
-    @NotNull
-    @Column(name = "backstate", nullable = false)
-    private String backState;
+	@Column(name = "backstate", nullable = true)
+	private String backState;
 
-    @NotNull
-    @Column(name = "forwardstate", nullable = false)
-    private String forwardState;
+	@Column(name = "forwardstate", nullable = true)
+	private String forwardState;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getForwardState() {
-        return forwardState;
-    }
+	public String getForwardState() {
+		return forwardState;
+	}
 
-    public void setForwardState(String forwardState) {
-        this.forwardState = forwardState;
-    }
-    public String getBackState() {
-        return backState;
-    }
+	public void setForwardState(String forwardState) {
+		this.forwardState = forwardState;
+	}
 
-    public void setBackState(String backState) {
-        this.backState = backState;
-    }
+	public String getBackState() {
+		return backState;
+	}
 
-    public String getFieldSpec() {
-        return fieldSpec;
-    }
+	public void setBackState(String backState) {
+		this.backState = backState;
+	}
 
-    public void setFieldSpec(String fieldSpec) {
-        this.fieldSpec = fieldSpec;
-    }
+	public String getFieldSpec() {
+		return fieldSpec;
+	}
 
-    public String getRule() {
-        return rule;
-    }
+	public void setFieldSpec(String fieldSpec) {
+		this.fieldSpec = fieldSpec;
+	}
 
-    public void setRule(String rule) {
-        this.rule = rule;
-    }
+	public String getRule() {
+		return rule;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setRule(String rule) {
+		this.rule = rule;
+	}
 
-        Rule rule = (Rule) o;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-        if ( ! Objects.equals(id, rule.id)) return false;
+		Rule rule = (Rule) o;
 
-        return true;
-    }
+		if (!Objects.equals(id, rule.id))
+			return false;
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "Rule{" +
-            "id=" + id +
-            ", name='" + name + "'" +
-            ", fieldSpec='" + fieldSpec + "'" +
-            ", rule='" + rule + "'" +
-            '}';
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(id);
+	}
+
+	@Override
+	public String toString() {
+		return "Rule{" + "id=" + id + ", name='" + name + "'" + ", fieldSpec='" + fieldSpec + "'" + ", rule='" + rule
+				+ "'" + '}';
+	}
 }

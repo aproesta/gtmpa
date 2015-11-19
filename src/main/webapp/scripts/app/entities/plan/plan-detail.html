@@ -12,7 +12,7 @@
             <tbody>
             <tr>
                 <td>
-                    <span>SolutionName</span>
+                    <span>Solution Name</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{plan.solutionName}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>AgreedGTMDate</span>
+                    <span>Agreed GTM Date</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{plan.agreedGTMDate | date:'mediumDate'}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>RevenueCommitment</span>
+                    <span>Revenue Commitment</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{plan.revenueCommitment}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>DealsRequired</span>
+                    <span>Deals Required</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{plan.dealsRequired}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>ProposalDate</span>
+                    <span>Proposal Date</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{plan.proposalDate | date:'mediumDate'}}</span>
@@ -52,15 +52,124 @@
             </tr>
             <tr>
                 <td>
-                    <span>IndustrySegment</span>
+                    <span>Industry Segment</span>
                 </td>
                 <td>
                     <span class="form-control-static" translate="{{'gtmpaApp.IndustrySegmentEnum.' + plan.industrySegment}}">{{plan.industrySegment}}</span>
                 </td>
             </tr>
+            
             <tr>
                 <td>
-                    <span>partner</span>
+                    <span>Initial Discussion Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.initialDiscussionDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Sales Competency Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.salesCompetencyDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>PreSales Competency Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.preSalesCompetencyDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Technical Competency Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.technicalCompetencyDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Solution Architected Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.solutionArchitectedDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Solution Costed Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.solutionCostedDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Solution Collateral Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.solutionCollateralDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Marketing Collateral Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.marketingCollateralDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Marketing Plan Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.marketingPlanDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Campaign Plan Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.campaignPlanDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Complete Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.completeDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.status}}</span>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <span>Partner</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="partner.detail({id:plan.partner.id})">{{plan.partner.name}}</a>
