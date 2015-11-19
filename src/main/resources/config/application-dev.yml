@@ -10,9 +10,6 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
-#        url: jdbc:postgresql://localhost:5432/gtmpa
-#        username: gtmpa
-#        password:
 
 spring:
     profiles:
@@ -24,10 +21,10 @@ spring:
             enabled: false # we use Grunt + BrowserSync for livereload
     datasource:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgres://admin:NUEJOKCWRVOLUJOP@aws-us-east-1-portal.8.dblayer.com:10641/g
+        url: jdbc:postgresql://localhost:5432/gtmpa
         name:
-        username: admin
-        password: NUEJOKCWRVOLUJOP
+        username: gtmpa
+        password:
     jpa:
         database-platform: com.ibm.gtmpa.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
