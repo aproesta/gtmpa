@@ -1,0 +1,15 @@
+id;name;field_spec;rule;backstate;forwardstate
+1;New;none;none;none;none
+2;Initial Discussion;initialDiscussionDate;10;1;3
+3;Sales Competency;salesCompetencyDate;10;2;4
+4;PreSales Competency;preSalesCompetencyDate;10;3;5
+5;Technical Competency;technicalCompetencyDate;10;4;6
+6;Solution Architected;solutionArchitectedDate;10;5;7
+7;Solution Costed;solutionCostedDate;10;6;8
+8;Solution Collateral;solutionCollateralDate;10;7;9
+9;Marketing Collateral;marketingCollateralDate;10;8;10
+10;Marketing Plan;marketingPlanDate;10;9;11
+11;Campaign Plan;campaignPlanDate;10;10;12
+12;Complete;completeDate;10;10;none
+13;Deferred;none;none;none;none
+14;Abandoned;none;none;none;none
