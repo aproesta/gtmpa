@@ -43,6 +43,9 @@ public class PartnerResourceIntTest {
 
     private static final String DEFAULT_NAME = "AAA";
     private static final String UPDATED_NAME = "BBB";
+    private static final String DEFAULT_CONTACT_NAME = "Arthur Proestakis";
+    private static final String DEFAULT_CONTACT_EMAIL = "arthur.proestakis@gmail.com";
+    private static final String DEFAULT_PIN = "1234";
 
     @Inject
     private PartnerRepository partnerRepository;
@@ -71,6 +74,9 @@ public class PartnerResourceIntTest {
     public void initTest() {
         partner = new Partner();
         partner.setName(DEFAULT_NAME);
+        partner.setContactName(DEFAULT_CONTACT_NAME);
+        partner.setContactEmail(DEFAULT_CONTACT_EMAIL);
+        partner.setPin(DEFAULT_PIN);
     }
 
     @Test

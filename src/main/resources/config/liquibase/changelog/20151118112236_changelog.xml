@@ -21,25 +21,4 @@
             </column>
         </addColumn>
     </changeSet>
-    <changeSet author="arthurproestakis (generated)" id="1447845818949-4">
-        <dropSequence sequenceName="action_id_seq"/>
-    </changeSet>
-    <changeSet author="arthurproestakis (generated)" id="1447845818949-5">
-        <dropSequence sequenceName="jhi_persistent_audit_event_event_id_seq"/>
-    </changeSet>
-    <changeSet author="arthurproestakis (generated)" id="1447845818949-6">
-        <dropSequence sequenceName="jhi_user_id_seq"/>
-    </changeSet>
-    <changeSet author="arthurproestakis (generated)" id="1447845818949-7">
-        <dropSequence sequenceName="partner_id_seq"/>
-    </changeSet>
-    <changeSet author="arthurproestakis (generated)" id="1447845818949-8">
-        <dropSequence sequenceName="plan_id_seq"/>
-    </changeSet>
-    <changeSet author="arthurproestakis (generated)" id="1447845818949-9">
-        <dropSequence sequenceName="rule_id_seq"/>
-    </changeSet>
-    <changeSet author="arthurproestakis (generated)" id="1447845818949-10">
-        <addNotNullConstraint columnDataType="date" columnName="next_action_date" tableName="action"/>
-    </changeSet>
 </databaseChangeLog>
