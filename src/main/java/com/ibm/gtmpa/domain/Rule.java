@@ -32,6 +32,14 @@ public class Rule implements Serializable {
     @Column(name = "rule", nullable = false)
     private String rule;
 
+    @NotNull
+    @Column(name = "backstate", nullable = false)
+    private String backState;
+
+    @NotNull
+    @Column(name = "forwardstate", nullable = false)
+    private String forwardState;
+
     public Long getId() {
         return id;
     }
@@ -46,6 +54,21 @@ public class Rule implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getForwardState() {
+        return forwardState;
+    }
+
+    public void setForwardState(String forwardState) {
+        this.forwardState = forwardState;
+    }
+    public String getBackState() {
+        return backState;
+    }
+
+    public void setBackState(String backState) {
+        this.backState = backState;
     }
 
     public String getFieldSpec() {
