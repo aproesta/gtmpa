@@ -25,7 +25,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="description" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="action_items" type="varchar(255)"/>
             <column name="next_action_date" type="date"/>

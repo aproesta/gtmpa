@@ -38,9 +38,7 @@ public class Action implements Serializable {
     @Column(name = "log_date", nullable = false)
     private LocalDate logDate;
 
-    @NotNull
-    @Size(min = 5)
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = true)
     private String description;
 
     @Column(name = "action_items")

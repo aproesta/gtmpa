@@ -23,15 +23,15 @@ angular.module('gtmpaApp')
 
         /* alert on eventClick */
         $scope.alertOnEventClick = function( date, jsEvent, view){
-            $scope.alertMessage = (date.title + ' was clicked ');
+            console.log(date.title + ' was clicked ');
         };
         /* alert on Drop */
         $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
-            $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+        	console.log('Event Droped to make dayDelta ' + delta);
         };
         /* alert on Resize */
         $scope.alertOnResize = function(event, delta, revertFunc, jsEvent, ui, view ){
-            $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
+        	console.log('Event Resized to make dayDelta ' + delta);
         };
 
         /* calendar config object */
@@ -53,12 +53,17 @@ angular.module('gtmpaApp')
         /* Calendar Data */
         /* event source that contains custom events on the scope */
         $scope.events = [
-            {title: 'Initial Workshop',start: new Date(y, m, 2), allDay: true},
-            {title: 'Sales Competency',start: new Date(y, m, 7), allDay: true},
-            {title: 'PreSales Competency',start: new Date(y, m, 16), allDay: true},
-            {title: 'Technical Competency',start: new Date(y, m, 21), allDay: true},
-            {title: 'Solution Architecture',start: new Date(y, m +1 , 2), allDay: true},
-            {title: 'Solution Collateral', start: new Date(y, m + 1, 7), allDay: true}
+            {title: 'Initial Discussion',start: $scope.plan.initialDiscussionDate, allDay: true},
+            {title: 'Sales Competency',start: $scope.plan.salesCompetencyDate, allDay: true},
+            {title: 'PreSales Competency',start: $scope.plan.preSalesCompetencyDate, allDay: true},
+            {title: 'Technical Competency',start: $scope.plan.technicalCompetencyDate, allDay: true},
+            {title: 'Solution Architecture',start: $scope.plan.solutionArchitectedDate, allDay: true},
+            {title: 'Solution Costed', start: $scope.plan.solutionCostedDate, allDay: true},
+            {title: 'Solution Collateral', start: $scope.plan.solutionCollateralDate, allDay: true},
+            {title: 'Marketing Collateral', start: $scope.plan.marketingCollateralDate, allDay: true},
+            {title: 'Marketing Plan', start: $scope.plan.marketingPlanDate, allDay: true},
+            {title: 'Campaign Plan', start: $scope.plan.campaignPlanDate, allDay: true},
+            {title: 'Complete', start: $scope.plan.completeDate, allDay: true}
         ];
 
         $scope.eventSources = [$scope.events];
