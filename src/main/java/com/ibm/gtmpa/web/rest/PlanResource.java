@@ -1,10 +1,13 @@
 package com.ibm.gtmpa.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.ibm.gtmpa.domain.Plan;
-import com.ibm.gtmpa.repository.PlanRepository;
-import com.ibm.gtmpa.web.rest.util.HeaderUtil;
-import com.ibm.gtmpa.web.rest.util.PaginationUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
+
+import javax.inject.Inject;
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -13,14 +16,20 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
+import com.codahale.metrics.annotation.Timed;
+import com.ibm.gtmpa.domain.Plan;
+import com.ibm.gtmpa.domain.PlanMilestoneManager;
+import com.ibm.gtmpa.domain.Rule;
+import com.ibm.gtmpa.repository.PlanRepository;
+import com.ibm.gtmpa.repository.RuleRepository;
+import com.ibm.gtmpa.web.rest.util.HeaderUtil;
+import com.ibm.gtmpa.web.rest.util.PaginationUtil;
 
 /**
  * REST controller for managing Plan.
@@ -33,6 +42,9 @@ public class PlanResource {
 
 	@Inject
 	private PlanRepository planRepository;
+
+	@Inject
+	private RuleRepository ruleRepository;
 
 	/**
 	 * POST /plans -> Create a new plan.
@@ -47,6 +59,9 @@ public class PlanResource {
 		}
 
 		// Set the milestone dates
+		List<Rule> rules = ruleRepository.findAll();
+		PlanMilestoneManager pmm = new PlanMilestoneManager(rules);
+		pmm.initialisePlanDates(plan);
 
 		Plan result = planRepository.save(plan);
 		return ResponseEntity.created(new URI("/api/plans/" + result.getId()))
