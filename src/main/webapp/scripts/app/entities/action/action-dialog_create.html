@@ -1,3 +1,4 @@
+
 <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
 
     <div class="modal-header">
@@ -46,17 +47,16 @@
         <div class="form-group">
             <label for="field_user">Owner</label>
             <select class="form-control" id="field_user" name="user" ng-model="action.user" ng-options="user as user.firstName for plan in plans track by user.id">
-                <option value=""></option>
+                <option value="admin">admin</option>
             </select>
         </div> 
-         <div class="form-group">
+        <!--  <div class="form-group">
             <label for="field_status">Status</label>
             <select class="form-control" name="status" ng-model="action.status" id="field_status">
                	<option selected="selected" value="Pending">Pending</option>
                 <option value="Completed">Completed</option>                
-            </select>
-            
-        </div>       
+            </select>            
+        </div>    -->    
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -64,10 +64,6 @@
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
-        <button type="submit" class="btn btn-primary" ng-click="markcompleted()">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Action Completed</span>
-        </button>
+        </button>        
     </div>
-    
 </form>

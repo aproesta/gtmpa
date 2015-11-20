@@ -1,15 +1,26 @@
 package com.ibm.gtmpa.domain;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import java.time.LocalDate;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
+import com.ibm.gtmpa.domain.enumeration.ActionStatusEnum;
+import com.ibm.gtmpa.domain.enumeration.IndustrySegmentEnum;
 
 /**
  * A Action.
@@ -38,8 +49,15 @@ public class Action implements Serializable {
     @Column(name = "next_action_date", nullable = false)
     private LocalDate nextActionDate;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "staus", nullable = true)
+    private ActionStatusEnum status;
+    
     @ManyToOne
     private Plan plan;
+	//ndimari
+	@ManyToOne
+    private User user;
 
     public Long getId() {
         return id;
@@ -87,6 +105,21 @@ public class Action implements Serializable {
 
     public void setPlan(Plan plan) {
         this.plan = plan;
+    }
+	
+	public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public ActionStatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(ActionStatusEnum status) {
+        this.status = status;
     }
 
     @Override

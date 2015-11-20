@@ -83,7 +83,16 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<PersistentToken> persistentTokens = new HashSet<>();
-
+    
+    @ManyToOne
+    private Partner partner;
+    
+    public Partner getPartner(){
+    	return partner;
+    }
+    public void setPartner(Partner partner){
+    	this.partner= partner;
+    }
     public Long getId() {
         return id;
     }

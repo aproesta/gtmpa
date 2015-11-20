@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="ndimari (generated)" id="1447977144769-1">
+        <addColumn tableName="jhi_user">
+            <column name="partner_id" type="int8"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1447977144769-2">
+        <addForeignKeyConstraint baseColumnNames="partner_id" baseTableName="jhi_user" constraintName="FK_r1kyto5ber31d1b7ry76j9arh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="partner"/>
+    </changeSet>
+</databaseChangeLog>

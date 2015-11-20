@@ -1,5 +1,6 @@
 'use strict';
 
+
 angular.module('gtmpaApp')
     .config(function ($stateProvider) {
         $stateProvider
@@ -45,8 +46,9 @@ angular.module('gtmpaApp')
                     authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                	
                     $modal.open({
-                        templateUrl: 'scripts/app/entities/action/action-dialog.html',
+                        templateUrl: 'scripts/app/entities/action/action-dialog_create.html',
                         controller: 'ActionDialogController',
                         size: 'lg',
                         resolve: {
@@ -114,3 +116,4 @@ angular.module('gtmpaApp')
                 }]
             });
     });
+
