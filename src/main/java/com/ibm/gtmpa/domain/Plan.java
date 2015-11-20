@@ -29,7 +29,8 @@ import com.ibm.gtmpa.domain.enumeration.IndustrySegmentEnum;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Plan implements Serializable {
 
-    public static String INITIAL_STATUS = "New";
+    public static String START_STATUS = "New";
+    public static String END_STATUS = "Complete";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,7 +43,7 @@ public class Plan implements Serializable {
 
 	@NotNull
 	@Column(name = "status", length = 100, nullable = false)
-	private String status = INITIAL_STATUS;
+	private String status = START_STATUS;
 
 	public String getStatus() {
 		return status;

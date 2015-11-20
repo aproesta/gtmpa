@@ -1,5 +1,5 @@
 id;name;field_spec;rule;backstate;forwardstate
-1;New;none;none;none;none
+1;New;none;10;;2
 2;Initial Discussion;initialDiscussionDate;10;1;3
 3;Sales Competency;salesCompetencyDate;10;2;4
 4;PreSales Competency;preSalesCompetencyDate;10;3;5
@@ -10,6 +10,6 @@ id;name;field_spec;rule;backstate;forwardstate
 9;Marketing Collateral;marketingCollateralDate;10;8;10
 10;Marketing Plan;marketingPlanDate;10;9;11
 11;Campaign Plan;campaignPlanDate;10;10;12
-12;Complete;completeDate;10;10;none
-13;Deferred;none;none;none;none
-14;Abandoned;none;none;none;none
+12;Complete;completeDate;0;11;;
+13;Deferred;none;0;;;
+14;Abandoned;none;0;;;
