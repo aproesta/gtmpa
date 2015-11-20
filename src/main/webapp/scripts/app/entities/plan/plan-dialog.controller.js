@@ -34,4 +34,19 @@ angular.module('gtmpaApp').controller('PlanDialogController',
         $scope.clear = function() {
             $modalInstance.dismiss('cancel');
         };
+
+        // TODO Calculate this from the Rules
+        $scope.minGTMDateDays = 100;
+        
+        $scope.getMinGTMDate = function() {
+        	var today = new Date();
+
+        	today.setDate(today.getDate() + $scope.minGTMDateDays);
+        	
+        	return today;
+
+        };
+
+    	$scope.minDate = $scope.getMinGTMDate();
+
 }]);

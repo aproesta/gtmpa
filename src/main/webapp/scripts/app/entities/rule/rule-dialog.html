@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="field_fieldSpec">FieldSpec</label>
+            <label for="field_fieldSpec">Plan Field</label>
             <input type="text" class="form-control" name="fieldSpec" id="field_fieldSpec"
                     ng-model="rule.fieldSpec"
                     required />
@@ -38,13 +38,37 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="field_rule">Rule</label>
+            <label for="field_rule">Duration Rule</label>
             <input type="text" class="form-control" name="rule" id="field_rule"
                     ng-model="rule.rule"
                     required />
             <div ng-show="editForm.rule.$invalid">
                 <p class="help-block"
                     ng-show="editForm.rule.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_rule">Back State</label>
+            <input type="text" class="form-control" name="rule" id="field_backstate"
+                   ng-model="rule.backState"
+                   required />
+            <div ng-show="editForm.backstate.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.backstate.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_rule">Forward State</label>
+            <input type="text" class="form-control" name="rule" id="field_forwardstate"
+                   ng-model="rule.forwardState"
+                   required />
+            <div ng-show="editForm.fowardstate.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.fowardstate.$error.required">
                     This field is required.
                 </p>
             </div>

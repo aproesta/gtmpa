@@ -14,7 +14,7 @@
                     ng-model="partner.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_name">Name</label>
+            <label for="field_name">Business Partner Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="partner.name"
                     required ng-minlength="3" ng-maxlength="20" />
@@ -30,6 +30,69 @@
                 <p class="help-block"
                     ng-show="editForm.name.$error.maxlength" translate-value-max="20">
                     This field cannot be longer than 20 characters.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_name">Contact Name</label>
+            <input type="text" class="form-control" name="contactName" id="field_contactName"
+                   ng-model="partner.contactName"
+                   required ng-minlength="5" ng-maxlength="40" />
+            <div ng-show="editForm.contactName.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.contactName.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.contactName.$error.minlength" translate-value-min="5">
+                    This field is required to be at least 5 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.contactName.$error.maxlength" translate-value-max="40">
+                    This field cannot be longer than 40 characters.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_name">Contact Email</label>
+            <input type="text" class="form-control" name="contactEmail" id="field_contactEmail"
+                   ng-model="partner.contactEmail"
+                   required ng-minlength="5" ng-maxlength="40" />
+            <div ng-show="editForm.contactEmail.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.contactEmail.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.contactEmail.$error.minlength" translate-value-min="5">
+                    This field is required to be at least 5 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.contactEmail.$error.maxlength" translate-value-max="40">
+                    This field cannot be longer than 40 characters.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_name">Pin</label>
+            <input type="text" class="form-control" name="pin" id="field_pin"
+                   ng-model="partner.pin"
+                   required ng-minlength="4" ng-maxlength="10" />
+            <div ng-show="editForm.pin.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.pin.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.pin.$error.minlength" translate-value-min="4">
+                    This field is required to be at least 4 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.pin.$error.maxlength" translate-value-max="10">
+                    This field cannot be longer than 10 characters.
                 </p>
             </div>
         </div>

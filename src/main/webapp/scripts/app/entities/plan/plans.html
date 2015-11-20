@@ -16,13 +16,14 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>SolutionName</th>
-                    <th>AgreedGTMDate</th>
-                    <th>RevenueCommitment</th>
-                    <th>DealsRequired</th>
-                    <th>ProposalDate</th>
-                    <th>IndustrySegment</th>
-                    <th>partner</th>
+                    <th>Solution Name</th>
+                    <th>Agreed GTM Date</th>
+                    <th>Revenue Commitment$</th>
+                    <th>Deals Required</th>
+                    <th>Proposal Date</th>
+                    <th>Industry Segment</th>
+                    <th>Status</th>
+                    <th>Partner</th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,11 +31,13 @@
                 <tr ng-repeat="plan in plans track by plan.id">
                     <td><a ui-sref="plan.detail({id:plan.id})">{{plan.id}}</a></td>
                     <td>{{plan.solutionName}}</td>
-                        <td>{{plan.agreedGTMDate | date:'mediumDate'}}</td>
+                    <td>{{plan.agreedGTMDate | date:'mediumDate'}}</td>
                     <td>{{plan.revenueCommitment}}</td>
                     <td>{{plan.dealsRequired}}</td>
-                        <td>{{plan.proposalDate | date:'mediumDate'}}</td>
+                    <td>{{plan.proposalDate | date:'mediumDate'}}</td>
                     <td translate="{{'gtmpaApp.IndustrySegmentEnum.' + plan.industrySegment}}">{{plan.industrySegment}}</td>
+                    <td>{{plan.status}}</td>
+
                     <td>
                         <a ui-sref="partner.detail({id:plan.partner.id})">{{plan.partner.name}}</a>
                     </td>

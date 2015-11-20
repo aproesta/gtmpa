@@ -17,8 +17,10 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>FieldSpec</th>
-                    <th>Rule</th>
+                    <th>Plan Field</th>
+                    <th>Duration Rule</th>
+                    <th>Back State</th>
+                    <th>Forward State</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,6 +30,8 @@
                     <td>{{rule.name}}</td>
                     <td>{{rule.fieldSpec}}</td>
                     <td>{{rule.rule}}</td>
+                    <td>{{rule.backState}}</td>
+                    <td>{{rule.forwardState}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="rule.detail({id:rule.id})"

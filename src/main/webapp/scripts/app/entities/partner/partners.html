@@ -16,7 +16,10 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Business Partner Name</th>
+                    <th>Contact Name</th>
+                    <th>Contact Email</th>
+                    <th>Pin</th>
                     <th></th>
                 </tr>
             </thead>
@@ -24,6 +27,9 @@
                 <tr ng-repeat="partner in partners track by partner.id">
                     <td><a ui-sref="partner.detail({id:partner.id})">{{partner.id}}</a></td>
                     <td>{{partner.name}}</td>
+                    <td>{{partner.contactName}}</td>
+                    <td>{{partner.contactEmail}}</td>
+                    <td>{{partner.pin}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="partner.detail({id:partner.id})"
