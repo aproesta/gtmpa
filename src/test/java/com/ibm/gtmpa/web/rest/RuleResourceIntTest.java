@@ -302,14 +302,23 @@ public class RuleResourceIntTest {
 
 		Rule thirdRule = new Rule();
 		thirdRule.setId(3L);
-		thirdRule.setName(Plan.END_STATUS);
-		thirdRule.setRule("10");
+		thirdRule.setName("Sales Competency");
+		thirdRule.setFieldSpec("salesCompetencyDate");
+		thirdRule.setRule("5");
+		thirdRule.setForwardState("4");
 		thirdRule.setBackState("2");
-		thirdRule.setFieldSpec("completeDate");
+
+		Rule lastRule = new Rule();
+		lastRule.setId(4L);
+		lastRule.setName(Plan.END_STATUS);
+		lastRule.setRule("10");
+		lastRule.setBackState("3");
+		lastRule.setFieldSpec("completeDate");
 
 		simpleRules.add(firstRule);
 		simpleRules.add(secondRule);
 		simpleRules.add(thirdRule);
+		simpleRules.add(lastRule);
 
 		LocalDate todaysDate = JSR310DateConverters.DateToLocalDateConverter.INSTANCE.convert(new Date());
 
@@ -323,11 +332,17 @@ public class RuleResourceIntTest {
 		assertThat(simplePMM.isAgreedGTMDateValid(agDate));
 		
 		// What do we expect Next??
+		simplePMM.initialisePlanDates(simplePlan);
+
 		// The Plan.initialDiscussionDate should be set to agDate - 10 days
 		// Need to check for businessDay adjustments too
-		simplePMM.initialisePlanDates(simplePlan);
 		LocalDate targetInitialDiscussionDate = PlanMilestoneManager.nextBusinessDay(agDate.minusDays(10));
 		assertThat(simplePlan.getInitialDiscussionDate().equals(targetInitialDiscussionDate));
+
+		// The Plan.salesCompetencyDate should be set to agDate - 15 days
+		LocalDate salesCompetencyDate = PlanMilestoneManager.nextBusinessDay(agDate.minusDays(15));
+		assertThat(simplePlan.getSalesCompetencyDate().equals(salesCompetencyDate));
+
 	}
 
 	@Test
