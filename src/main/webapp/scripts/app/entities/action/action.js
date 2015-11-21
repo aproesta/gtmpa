@@ -48,7 +48,7 @@ angular.module('gtmpaApp')
                 onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
                 	
                     $modal.open({
-                        templateUrl: 'scripts/app/entities/action/action-dialog_create.html',
+                        templateUrl: 'scripts/app/entities/action/action-dialog.html',
                         controller: 'ActionDialogController',
                         size: 'lg',
                         resolve: {
@@ -90,6 +90,17 @@ angular.module('gtmpaApp')
                     }, function() {
                         $state.go('^');
                     })
+                }]
+            })
+            .state('action.complete', {
+                parent: 'action',
+                url: '/{id}/complete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                	window.alert("Mark this action complete: " + $stateParams.id);
+                	$state.go('action', null, { reload: true });
                 }]
             })
             .state('action.delete', {

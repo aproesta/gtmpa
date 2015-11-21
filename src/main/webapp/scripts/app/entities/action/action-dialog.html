@@ -16,29 +16,41 @@
             <label for="field_logDate">Date Created</label>
             <input type="date" class="form-control" name="logDate" id="field_logDate"
                     ng-model="action.logDate" readonly />
-            <div ng-show="editForm.logDate.$invalid">
+        </div>
+        <div class="form-group">
+            <label for="field_actionItems">Action</label>
+            <input type="text" class="form-control" name="actionItems" id="field_actionItems"
+                    ng-model="action.actionItems" required/>
+            <div ng-show="editForm.actionItems.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.logDate.$error.required">
+                    ng-show="editForm.actionItems.$error.required">
                     This field is required.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label for="field_actionItems">Action</label>
-            <input type="text" class="form-control" name="actionItems" id="field_actionItems"
-                    ng-model="action.actionItems" />
-        </div>
-        <div class="form-group">
             <label for="field_nextActionDate">Due Date</label>
             <input type="date" class="form-control" name="nextActionDate" id="field_nextActionDate"
-                    ng-model="action.nextActionDate" />
+                    ng-model="action.nextActionDate" required/>
+            <div ng-show="editForm.nextActionDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nextActionDate.$error.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="field_plan">Plan</label>
-            <select class="form-control" id="field_plan" name="plan" ng-model="action.plan" ng-options="plan as plan.solutionName for plan in plans track by plan.id">
+            <select class="form-control" id="field_plan" name="plan" required ng-model="action.plan" ng-options="plan as plan.solutionName for plan in plans track by plan.id">
                 <option value=""></option>
             </select>
+            <div ng-show="editForm.plan.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.plan.$error.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <label for="field_user">Owner</label>
@@ -49,7 +61,8 @@
          <div class="form-group">
             <label for="field_status">Status</label>
             <select class="form-control" name="status" ng-model="action.status" id="field_status">
-               	<option selected="selected" value="Pending">Pending</option>
+               	<option value="New">New</option>
+               	<option value="InProgress">InProgress</option>
                 <option value="Completed">Completed</option>                
             </select>
             
@@ -61,9 +74,6 @@
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
-        <button type="submit" class="btn btn-primary" ng-click="markcompleted()">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Action Completed</span>
         </button>
     </div>
     

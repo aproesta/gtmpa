@@ -28,7 +28,6 @@ angular.module('gtmpaApp').controller('ActionDialogController',
         $scope.save = function () {
             $scope.isSaving = true;
             if ($scope.action.id != null) {
-            	$scope.action.status = "Pending"
                 Action.update($scope.action, onSaveSuccess, onSaveError);
             } else {
                 Action.save($scope.action, onSaveSuccess, onSaveError);
