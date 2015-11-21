@@ -21,7 +21,7 @@
             <div ng-show="editForm.solutionName.$invalid">
                 <p class="help-block"
                     ng-show="editForm.solutionName.$error.required">
-                    This field is required.
+                    Required. Name of the application for this joint proposal with IBM
                 </p>
                 <p class="help-block"
                     ng-show="editForm.solutionName.$error.minlength" translate-value-min="3">
@@ -35,9 +35,14 @@
         </div>
         <div class="form-group">
             <label for="field_agreedGTMDate">Agreed GTM Date</label>
-            <input type="date" class="form-control" name="agreedGTMDate" id="field_agreedGTMDate"
-                    ng-model="plan.agreedGTMDate"
-                    required />
+			<p class="input-group">
+	            <input type="text" id="field_agreedGTMDate" class="form-control" uib-datepicker-popup="dd-MM-yyyy"
+    	        	ng-model="plan.agreedGTMDate" is-open="statusGTM.opened" ng-required="true" min-date="aGTMminDate"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openGTM($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>             
+            <!-- TODO below is not working -->
             <div ng-show="editForm.agreedGTMDate.$invalid">
                 <p class="help-block"
                     ng-show="editForm.agreedGTMDate.$error.required">
@@ -45,6 +50,7 @@
                 </p>
             </div>
         </div>
+
         <div class="form-group">
             <label for="field_revenueCommitment">Revenue Commitment</label>
             <input type="number" class="form-control" name="revenueCommitment" id="field_revenueCommitment"
@@ -53,7 +59,7 @@
             <div ng-show="editForm.revenueCommitment.$invalid">
                 <p class="help-block"
                     ng-show="editForm.revenueCommitment.$error.required">
-                    This field is required.
+                    Required. Amount of joint revenue that can be expected via this arrangement
                 </p>
                 <p class="help-block"
                     ng-show="editForm.revenueCommitment.$error.number">
@@ -69,7 +75,7 @@
             <div ng-show="editForm.dealsRequired.$invalid">
                 <p class="help-block"
                     ng-show="editForm.dealsRequired.$error.required">
-                    This field is required.
+                    Required. Enter the total number of deals to achieve the revenue target
                 </p>
                 <p class="help-block"
                     ng-show="editForm.dealsRequired.$error.number">
@@ -79,9 +85,13 @@
         </div>
         <div class="form-group">
             <label for="field_proposalDate">Proposal Date</label>
-            <input type="date" class="form-control" name="proposalDate" id="field_proposalDate"
-                    ng-model="plan.proposalDate"
-                    required />
+			<p class="input-group">
+	            <input type="text" id="field_proposalDate" class="form-control" uib-datepicker-popup="dd-MM-yyyy"
+    	        	ng-model="plan.proposalDate" is-open="statusProposal.opened" ng-required="true" min-date="proposalMinDate"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openProposal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>             
             <div ng-show="editForm.proposalDate.$invalid">
                 <p class="help-block"
                     ng-show="editForm.proposalDate.$error.required">

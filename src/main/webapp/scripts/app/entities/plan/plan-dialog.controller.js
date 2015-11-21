@@ -35,18 +35,37 @@ angular.module('gtmpaApp').controller('PlanDialogController',
             $modalInstance.dismiss('cancel');
         };
 
+        
+        /*
+         * DatePicker for agreedToMarket
+         */
         // TODO Calculate this from the Rules
         $scope.minGTMDateDays = 100;
-        
         $scope.getMinGTMDate = function() {
         	var today = new Date();
-
         	today.setDate(today.getDate() + $scope.minGTMDateDays);
-        	
         	return today;
-
         };
+   	    $scope.aGTMminDate = $scope.getMinGTMDate();
+        $scope.plan.agreedGTMDate = $scope.aGTMminDate;
 
-    	$scope.minDate = $scope.getMinGTMDate();
+    	$scope.openGTM = function($event) {
+    		$scope.statusGTM.opened = true;
+    	};
+    	$scope.statusGTM = {
+    		opened: false
+    	};
 
+        /*
+         * DatePicker for agreedToMarket
+         */
+   	    $scope.proposalMinDate = new Date();
+        $scope.plan.proposalDate = $scope.proposalMinDate;
+    	$scope.openProposal = function($event) {
+    		$scope.statusProposal.opened = true;
+    	};
+    	$scope.statusProposal = {
+    		opened: false
+    	};
+    	
 }]);
