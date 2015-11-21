@@ -17,7 +17,7 @@
             <label for="field_logDate">Date Created</label>
             <input type="date" class="form-control" name="logDate" id="field_logDate"
                     ng-model="action.logDate"
-                    required />
+                    readonly />
             <div ng-show="editForm.logDate.$invalid">
                 <p class="help-block"
                     ng-show="editForm.logDate.$error.required">

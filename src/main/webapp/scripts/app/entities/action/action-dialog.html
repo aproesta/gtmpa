@@ -15,8 +15,7 @@
         <div class="form-group">
             <label for="field_logDate">Date Created</label>
             <input type="date" class="form-control" name="logDate" id="field_logDate"
-                    ng-model="action.logDate"
-                    required />
+                    ng-model="action.logDate" readonly />
             <div ng-show="editForm.logDate.$invalid">
                 <p class="help-block"
                     ng-show="editForm.logDate.$error.required">
@@ -27,14 +26,12 @@
         <div class="form-group">
             <label for="field_actionItems">Action</label>
             <input type="text" class="form-control" name="actionItems" id="field_actionItems"
-                    ng-model="action.actionItems"
-                     />
+                    ng-model="action.actionItems" />
         </div>
         <div class="form-group">
             <label for="field_nextActionDate">Due Date</label>
             <input type="date" class="form-control" name="nextActionDate" id="field_nextActionDate"
-                    ng-model="action.nextActionDate"
-                     />
+                    ng-model="action.nextActionDate" />
         </div>
 
         <div class="form-group">

@@ -6,18 +6,15 @@ angular.module('gtmpaApp').controller('ActionDialogController',
 
         $scope.action = entity;
         $scope.plans = Plan.query();
-        $scope.load = function(id) {
-            Action.get({id : id}, function(result) {
-                $scope.action = result;
-            });
-        };
-        
         $scope.users = User.query();
         $scope.load = function(id) {
             Action.get({id : id}, function(result) {
                 $scope.action = result;
             });
         };
+        $scope.action.logDate = new Date();
+        
+
         var onSaveSuccess = function (result) {
             $scope.$emit('gtmpaApp:actionUpdate', result);
             $modalInstance.close(result);
@@ -49,13 +46,6 @@ angular.module('gtmpaApp').controller('ActionDialogController',
         $scope.clear = function() {
             $modalInstance.dismiss('cancel');
         };
-        
-     //naresh
-        $(document).ready( function() {
-        	
-        	//alert("I am an alert box Actionsdialogcontrolle");        	  
-            $scope.action.logDate = new Date();
-            //$('#nextActionDate').val(today);
-        });
+
 }]);
 
