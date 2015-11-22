@@ -37,7 +37,8 @@
             <label for="field_agreedGTMDate">Agreed GTM Date</label>
 			<p class="input-group">
 	            <input type="text" id="field_agreedGTMDate" class="form-control" uib-datepicker-popup="dd-MM-yyyy"
-    	        	ng-model="plan.agreedGTMDate" is-open="statusGTM.opened" ng-required="true" min-date="aGTMminDate"/>
+    	        	ng-model="plan.agreedGTMDate" is-open="statusGTM.opened" ng-required="true" min-date="aGTMminDate"
+    	        	name="agreedGTMDate"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="openGTM($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -87,7 +88,8 @@
             <label for="field_proposalDate">Proposal Date</label>
 			<p class="input-group">
 	            <input type="text" id="field_proposalDate" class="form-control" uib-datepicker-popup="dd-MM-yyyy"
-    	        	ng-model="plan.proposalDate" is-open="statusProposal.opened" ng-required="true" min-date="proposalMinDate"/>
+    	        	ng-model="plan.proposalDate" is-open="statusProposal.opened" ng-required="true" min-date="proposalMinDate"
+    	        	name="proposalDate"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="openProposal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>

@@ -30,8 +30,13 @@
         </div>
         <div class="form-group">
             <label for="field_nextActionDate">Due Date</label>
-            <input type="date" class="form-control" name="nextActionDate" id="field_nextActionDate"
-                    ng-model="action.nextActionDate" required/>
+            <p class="input-group">
+	            <input type="text" name="nextActionDate" id="field_nextActionDate" class="form-control" uib-datepicker-popup="dd-MM-yyyy"
+    	        	ng-model="action.nextActionDate" is-open="status.opened" ng-required="true" min-date="dueDateMinDate"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>             
             <div ng-show="editForm.nextActionDate.$invalid">
                 <p class="help-block"
                     ng-show="editForm.nextActionDate.$error.required">

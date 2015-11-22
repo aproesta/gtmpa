@@ -45,6 +45,19 @@ angular.module('gtmpaApp').controller('ActionDialogController',
         $scope.clear = function() {
             $modalInstance.dismiss('cancel');
         };
+        
+        /*
+         * DatePicker for agreedToMarket
+         */
+   	    $scope.dueDateMinDate = new Date();
+        $scope.action.nextActionDate = $scope.dueDateMinDate;
+    	$scope.open = function($event) {
+    		$scope.status.opened = true;
+    	};
+    	$scope.status = {
+    		opened: false
+    	};
+
 
 }]);
 
