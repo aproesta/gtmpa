@@ -16,9 +16,8 @@ angular.module('gtmpaApp')
         $scope.$on('$destroy', unsubscribe);
 
         /* alert on eventClick */
-        $scope.alertOnEventClick = function( date, jsEvent, view){
-        	$('#calendar').fullCalendar('gotoDate', $scope.plan.initialDiscussionDate);
-            console.log(date.title + ' was clicked ');
+        $scope.alertOnEventClick = function(event, jsEvent, view ){
+        	alert('TODO: Mark ' + event.title + " as complete?");
         };
         /* alert on Drop */
         $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
@@ -29,23 +28,7 @@ angular.module('gtmpaApp')
         	console.log('Event Resized to make dayDelta ' + delta);
         };
 
-        /* calendar config object */
-        $scope.uiConfig = {
-            calendar:{
-                height: 450,
-                editable: true,
-                header:{
-                    left: 'title',
-                    center: 'title',
-                    right: 'today prev,next'
-                },
-                dayClick: $scope.alertOnEventClick,
-                eventDrop: $scope.alertOnDrop,
-                eventResize: $scope.alertOnResize
-            }
-        };
-        
-
+ 
         $scope.setCalendarStart = function () {
         	$('#calendar').fullCalendar('gotoDate', $scope.plan.initialDiscussionDate);
         };
@@ -54,7 +37,7 @@ angular.module('gtmpaApp')
         $('#calendar').fullCalendar({
             height: 450,
             editable: true,
-            dayClick: $scope.alertOnEventClick,
+            eventClick: $scope.alertOnEventClick,
             eventDrop: $scope.alertOnDrop,
             eventResize: $scope.alertOnResize,
             events: function(start, end, timezone, callback) {
@@ -75,7 +58,7 @@ angular.module('gtmpaApp')
                          {title: 'Complete', start: $scope.plan.completeDate, allDay: true}
                     ];
                     callback(events);
-                    window.setTimeout($scope.setCalendarStart, 500);
+                    // window.setTimeout($scope.setCalendarStart, 500);
                 });
             }
         });

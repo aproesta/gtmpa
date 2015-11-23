@@ -3,7 +3,7 @@
 angular.module('gtmpaApp', ['LocalStorageModule',
                'ui.bootstrap', // for modal dialogs
     'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll', 'angular-loading-bar',
-    'ui.calendar'])
+    'ui.calendar', 'chart.js'])
 
     .run(function ($rootScope, $location, $window, $http, $state,  Auth, Principal, ENV, VERSION) {
 

@@ -55,13 +55,17 @@
             <br>
             <img class="img-responsive" src="assets/images/woman_ipad.jpg">
         </div>
-        <div class="col-md-3" ng-hide="!isAuthenticated()">
-            <img class="img-responsive img-rounded" src="assets/images/chart1.jpg"><br>
-            <img class="img-responsive img-rounded" src="assets/images/chart2.jpg">
-        </div>
-        <div class="col-md-3" ng-hide="!isAuthenticated()">
-            <img class="img-responsive img-rounded" src="assets/images/chart3.png"> <br>
-            <img class="img-responsive img-rounded" src="assets/images/chart4.jpg">
+        <div class="col-md-6" ng-hide="!isAuthenticated()">
+        	<canvas id="line" class="chart chart-line" chart-data="c1_data"
+  			chart-labels="c1_labels" chart-legend="true" chart-series="c1_series"
+  				chart-click="c1_onClick" >
+			</canvas> 
+			<canvas id="bar" class="chart chart-bar"
+  				chart-data="c2_data" chart-labels="c2_labels" chart-series="c2_series">
+			</canvas>
+			<canvas id="pie" class="chart chart-pie"
+  				chart-data="c3_data" chart-labels="c3_labels" chart-series="c3_series">>
+			</canvas>
         </div>
     </div>
 </div>
