@@ -17,6 +17,7 @@ angular.module('gtmpaApp')
 
         /* alert on eventClick */
         $scope.alertOnEventClick = function( date, jsEvent, view){
+        	$('#calendar').fullCalendar('gotoDate', $scope.plan.initialDiscussionDate);
             console.log(date.title + ' was clicked ');
         };
         /* alert on Drop */
@@ -45,6 +46,11 @@ angular.module('gtmpaApp')
         };
         
 
+        $scope.setCalendarStart = function () {
+        	$('#calendar').fullCalendar('gotoDate', $scope.plan.initialDiscussionDate);
+        };
+
+
         $('#calendar').fullCalendar({
             height: 450,
             editable: true,
@@ -69,10 +75,9 @@ angular.module('gtmpaApp')
                          {title: 'Complete', start: $scope.plan.completeDate, allDay: true}
                     ];
                     callback(events);
-
+                    window.setTimeout($scope.setCalendarStart, 500);
                 });
             }
         });
-
 
     });
