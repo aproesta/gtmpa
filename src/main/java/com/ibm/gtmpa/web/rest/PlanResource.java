@@ -59,9 +59,11 @@ public class PlanResource {
 		}
 
 		// Set the milestone dates
-		List<Rule> rules = ruleRepository.findAll();
-		PlanMilestoneManager pmm = new PlanMilestoneManager(rules);
-		pmm.initialisePlanDates(plan);
+		if (ruleRepository != null) {
+			List<Rule> rules = ruleRepository.findAll();
+			PlanMilestoneManager pmm = new PlanMilestoneManager(rules);
+			pmm.initialisePlanDates(plan);
+		}
 
 		Plan result = planRepository.save(plan);
 		return ResponseEntity.created(new URI("/api/plans/" + result.getId()))

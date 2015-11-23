@@ -128,24 +128,6 @@ public class ActionResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDescriptionIsRequired() throws Exception {
-        int databaseSizeBeforeTest = actionRepository.findAll().size();
-        // set the field null
-        action.setDescription(null);
-
-        // Create the Action, which fails.
-
-        restActionMockMvc.perform(post("/api/actions")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(action)))
-                .andExpect(status().isBadRequest());
-
-        List<Action> actions = actionRepository.findAll();
-        assertThat(actions).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllActions() throws Exception {
         // Initialize the database
         actionRepository.saveAndFlush(action);
