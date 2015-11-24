@@ -21,7 +21,7 @@ spring:
             enabled: false
     datasource:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgres://admin:NUEJOKCWRVOLUJOP@aws-us-east-1-portal.8.dblayer.com:10641/gtmpa
+        url: jdbc:postgresql://aws-us-east-1-portal.8.dblayer.com:10641/gtmpa
         name:
         username: admin
         password: NUEJOKCWRVOLUJOP
