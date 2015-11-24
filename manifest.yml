@@ -1,11 +1,14 @@
+---
 applications:
-- path: gtmpa-0.0.1-SNAPSHOT1.war
-  memory: 512M
+- name: gtmpa
+  path: target/gtmpa-0.0.1-SNAPSHOT.war
+  memory: 1024M
   instances: 1
-  name: gtmpa
+  timeout: 180
+  buildpack: java_buildpack
   host: gtmpa
   disk_quota: 1024M
   env:
     SPRING_PROFILES_ACTIVE: prod
-services:
-- "PostgreSQL by Compose-da"
+  services:
+   - postgresql
