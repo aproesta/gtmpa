@@ -3,15 +3,26 @@
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <button class="btn btn-primary" ui-sref="action.new">
                     <span class="glyphicon glyphicon-tasks"></span> <span>Create a new Action</span>
                 </button>
             </div>
+            	<!-- <span> Naresh Filter Action List by Status</span> -->			 
+	    		<div>
+		    		<select class="btn btn-primary dropdown-toggle" data-toggle="dropdown" ng-model="status">
+			    		<option value="">- Filter By Status -</option>    		
+			            <option value="InProgress">InProgress</option>
+			            <option value="Completed">Completed</option>  
+			            <option value=" New"> New</option>
+	               	</select>
+   			</div>
         </div>
     </div>
-
+    	
     <div class="table-responsive">
+    
+    
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -21,21 +32,30 @@
                     <th>Due Date</th>
                     <th>Status</th>
                     <th>Owner</th>
-                    <th>Plan</th>
+                    <th>Plan</th>                    
                     <th></th>
                 </tr>
             </thead>
+            
             <tbody>
-                <tr ng-repeat="action in actions track by action.id">
+                <tr class="overdue-{{action.status.search('overdue') >   0}}" ng-repeat="action in actions | filter:status | orderBy:'action.status'">
                     <td><a ui-sref="action.detail({id:action.id})">{{action.id}}</a></td>
                     <td>{{action.logDate | date:'mediumDate'}}</td>
                     <td>{{action.actionItems}}</td>
+                    
                     <td>{{action.nextActionDate | date:'mediumDate'}}</td>
-                    <td>{{action.status}}</td>
+                    <td>
+                    <span>{{action.status.replace('overdue','')}}</span>
+                  <!--    <span>{{action.status}}</span> -->
+                    </td>
                     <td>{{action.user}}</td>
                     <td>
                         <a ui-sref="plan.detail({id:action.plan.id})">{{action.plan.solutionName}}</a>
                     </td>
+                    <!-- <td>
+                        {{Date.parse(action.nextActionDate) <   currentDate.getTime()}} 
+                        {{action.status.search('overdue') >   0}}
+                    </td> -->
                     <td>
                         <button type="submit"
                                 ui-sref="action.detail({id:action.id})"

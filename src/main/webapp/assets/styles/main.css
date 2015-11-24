@@ -206,3 +206,9 @@ ul#strengthBar {
     top: -20px;
     left: -35px;
 }
+
+.overdue-true {
+   color: red;
+   font-weight: bold;
+   /* background-color: #00ff00; */
+}
