@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span>Plan</span> {{plan.id}}</h2>
+    <h2><span>Plan</span> '{{plan.solutionName}}'</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -10,6 +10,14 @@
             </tr>
             </thead>
             <tbody>
+            <tr>
+                <td>
+                    <span>Plan ID</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{plan.id}}</span>
+                </td>
+            </tr>
             <tr>
                 <td>
                     <span>Solution Name</span>
@@ -28,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Revenue Commitment</span>
+                    <span>Goal</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{plan.revenueCommitment}}</span>
