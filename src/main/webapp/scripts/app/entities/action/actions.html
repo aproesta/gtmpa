@@ -14,7 +14,7 @@
 			    		<option value="">- Filter By Status -</option>    		
 			            <option value="InProgress">InProgress</option>
 			            <option value="Completed">Completed</option>  
-			            <option value=" New"> New</option>
+			            <option value="New1">New</option>
 	               	</select>
    			</div>
         </div>
@@ -45,17 +45,13 @@
                     
                     <td>{{action.nextActionDate | date:'mediumDate'}}</td>
                     <td>
-                    <span>{{action.status.replace('overdue','')}}</span>
+                    <span>{{action.status.replace('overdue','').replace('1','')}}</span>
                   <!--    <span>{{action.status}}</span> -->
                     </td>
-                    <td>{{action.user}}</td>
+                    <td>{{action.user.firstName + ' ' + action.user.lastName}}</td>
                     <td>
                         <a ui-sref="plan.detail({id:action.plan.id})">{{action.plan.solutionName}}</a>
                     </td>
-                    <!-- <td>
-                        {{Date.parse(action.nextActionDate) <   currentDate.getTime()}} 
-                        {{action.status.search('overdue') >   0}}
-                    </td> -->
                     <td>
                         <button type="submit"
                                 ui-sref="action.detail({id:action.id})"
