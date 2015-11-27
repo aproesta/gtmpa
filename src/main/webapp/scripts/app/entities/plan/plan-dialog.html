@@ -171,7 +171,7 @@
 		type="number" class="form-control"  /> <label>% of
 		Revenue achieved</label> <input type="number" class="form-control" readonly />
 	<label>Target Customers</label> <input type="text"
-		class="form-control" value="Telstra, NBN"/>
+		class="form-control" value="Telco1, Telco2, Telco3"/>
 </div>
 </uib-tab> <uib-tab heading="Comments">
 <div class="modal-body">
@@ -203,17 +203,17 @@
 </uib-tab> <uib-tab heading="Analysis">
 <div class="modal-body">
 
-	<canvas height="50%" id="line" class="chart chart-line"
-		chart-data="c1_data" chart-labels="c1_labels" chart-legend="true"
-		chart-series="c1_series" chart-click="c1_onClick">
+	<canvas id="pie" height="50%" class="chart chart-pie"
+		chart-data="c3_data" chart-legend="true" chart-labels="c3_labels"
+		chart-series="c3_series">>
 			</canvas>
 	<canvas id="bar" height="50%" class="chart chart-bar"
 		chart-data="c2_data" chart-legend="true" chart-labels="c2_labels"
 		chart-series="c2_series">
 			</canvas>
-	<canvas id="pie" height="50%" class="chart chart-pie"
-		chart-data="c3_data" chart-legend="true" chart-labels="c3_labels"
-		chart-series="c3_series">>
+	<canvas height="50%" id="line" class="chart chart-line"
+		chart-data="c1_data" chart-labels="c1_labels" chart-legend="true"
+		chart-series="c1_series" chart-click="c1_onClick">
 			</canvas>
 </div>
 
