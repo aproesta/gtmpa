@@ -33,6 +33,7 @@ module.exports = function (config) {
             'main/webapp/bower_components/angular-ui-calendar/src/calendar.js',
             'main/webapp/bower_components/Chart.js/Chart.js',
             'main/webapp/bower_components/angular-chart.js/dist/angular-chart.js',
+            'main/webapp/bower_components/angular-confirm-modal/angular-confirm.min.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',

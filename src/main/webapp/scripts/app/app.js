@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gtmpaApp', ['LocalStorageModule',
-               'ui.bootstrap', // for modal dialogs
+               'ui.bootstrap', 'angular-confirm',
     'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll', 'angular-loading-bar',
     'ui.calendar', 'chart.js'])
 
