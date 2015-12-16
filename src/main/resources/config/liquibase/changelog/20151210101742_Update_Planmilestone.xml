@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="ndimari (generated)" id="1449742667089-1">
+        <addColumn tableName="planmilestone">
+            <column name="milestone_type" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-2">
+        <dropSequence sequenceName="action_id_seq"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-3">
+        <dropSequence sequenceName="jhi_persistent_audit_event_event_id_seq"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-4">
+        <dropSequence sequenceName="jhi_user_id_seq"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-5">
+        <dropSequence sequenceName="partner_id_seq"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-6">
+        <dropSequence sequenceName="partneruserlink_id_seq"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-7">
+        <dropSequence sequenceName="plan_id_seq"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-8">
+        <dropSequence sequenceName="planmilestone_id_seq"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-9">
+        <dropSequence sequenceName="rule_id_seq"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-10">
+        <dropColumn columnName="milestoneType" tableName="planmilestone"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1449742667089-11">
+        <addNotNullConstraint columnDataType="date" columnName="next_action_date" tableName="action"/>
+    </changeSet>
+</databaseChangeLog>

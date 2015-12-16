@@ -14,13 +14,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.ibm.gtmpa.domain.enumeration.ActionStatusEnum;
-import com.ibm.gtmpa.domain.enumeration.IndustrySegmentEnum;
+import com.ibm.gtmpa.domain.enumeration.ActionTypeEnum;
 
 /**
  * A Action.
@@ -57,6 +56,11 @@ public class Action implements Serializable {
 	@ManyToOne
     private User user;
 
+	 @Enumerated(EnumType.STRING)
+	 @Column(name = "action_type_code", nullable = true)
+	 private ActionTypeEnum actionTypeCode;
+	 
+	 
     public Long getId() {
         return id;
     }
@@ -119,6 +123,15 @@ public class Action implements Serializable {
     public void setStatus(ActionStatusEnum status) {
         this.status = status;
     }
+    
+    public ActionTypeEnum getActionTypeCode() {
+        return actionTypeCode;
+    }
+
+    public void setActionTypeCode(ActionTypeEnum actionTypeCode) {
+        this.actionTypeCode = actionTypeCode;
+    }
+
 
     @Override
     public boolean equals(Object o) {

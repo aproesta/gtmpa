@@ -1,0 +1,57 @@
+<div>
+    <h2>Partneruserlinks</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="partneruserlink.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Partneruserlink</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="partneruserlink in partneruserlinks track by partneruserlink.id">
+                    <td><a ui-sref="partneruserlink.detail({id:partneruserlink.id})">{{partneruserlink.id}}</a></td>
+                    <td>{{partneruserlink.description}}</td>
+                    <td>
+                    	<a ui-sref="user.detail({id:partneruserlink.user.id})">
+                    	{{partneruserlink.user.firstName + ' ' + partneruserlink.user.lastName}}
+                    	</a>
+                    </td>
+                     <td>
+                        <a ui-sref="partner.detail({id:partneruserlink.partner.id})">{{partneruserlink.partner.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="partneruserlink.detail({id:partneruserlink.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="partneruserlink.edit({id:partneruserlink.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="partneruserlink.delete({id:partneruserlink.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

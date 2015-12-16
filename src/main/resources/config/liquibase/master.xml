@@ -16,5 +16,10 @@
 	<include file="classpath:config/liquibase/changelog/20151119235220_add_att_User.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151126031120_added_entity_Partneruserlink.xml" relativeToChangelogFile="false"/>
 	<include file="classpath:config/liquibase/changelog/20151126040555_Add_att_Partneruserlink.xml" relativeToChangelogFile="false"/>
-    <!-- JHipster will add liquibase changelogs here -->
+	<include file="classpath:config/liquibase/changelog/20151210034048_added_att_Action.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151210045946_added_entity_Planmilestone.xml" relativeToChangelogFile="false"/>
+	<include file="classpath:config/liquibase/changelog/20151210094259_Update_att_Action.xml" relativeToChangelogFile="false"/>
+	<include file="classpath:config/liquibase/changelog/20151210101742_Update_Planmilestone.xml" relativeToChangelogFile="false"/>
+	<include file="classpath:config/liquibase/changelog/20151210111053_Update_att_Action.xml" relativeToChangelogFile="false"/>
+	<!-- JHipster will add liquibase changelogs here 20151210101742_Update_Planmilestone-->
 </databaseChangeLog>

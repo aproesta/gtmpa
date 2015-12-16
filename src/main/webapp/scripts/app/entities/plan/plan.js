@@ -57,6 +57,44 @@ angular.module('gtmpaApp')
                     }]
                 }
             })
+            .state('plan.milestone', {
+                parent: 'plan',
+                url: '/{id}/milstone',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'Plan Milestone'
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/planmilestone/planmilestone-dialog1.html',
+                        controller: 'PlanmilestoneDialogController1',
+                        size: 'lg',
+                        resolve: {
+
+                          /*  entity: ['Plan', function(Plan) {
+                                return Plan.get({id : $stateParams.id});
+                            }]*/
+                        
+                            entity: function () {
+                                return {
+                                    milestoneDate: null,
+                                    id: null,
+                                    plan: null
+                                };
+                            }
+                        }
+                    }).result.then(function(result) {
+                        $state.go('plan', null, { reload: true });
+                    }, function() {
+                        $state.go('plan');
+                    })
+                }],
+                resolve: {
+                    entity: ['$stateParams', 'Plan', function($stateParams, Plan) {
+                        return Plan.get({id : $stateParams.id});
+                    }]
+                }
+            })
             .state('plan.new', {
                 parent: 'plan',
                 url: '/new',

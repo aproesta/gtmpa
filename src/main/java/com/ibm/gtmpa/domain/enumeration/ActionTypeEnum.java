@@ -1,0 +1,8 @@
+package com.ibm.gtmpa.domain.enumeration;
+
+public enum ActionTypeEnum {
+	ForAgreedGTMDate,ForProposalDate,ForInitialDiscussionDate,ForSalesCompetencyDate,ForPreSalesCompetencyDate,
+ForTechnicalCompetencyDate,ForSolutionArchitectedDate,ForSolutionCostedDate,
+ForSolutionCollateralDate,ForMarketingCollateralDate,ForMarketingPlanDate,ForCampaignPlanDate
+
+}
