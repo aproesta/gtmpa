@@ -13,7 +13,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -32,18 +31,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.gtmpa.Application;
 import com.ibm.gtmpa.domain.Plan;
-import com.ibm.gtmpa.domain.PlanMilestoneManager;
-import com.ibm.gtmpa.domain.Rule;
 import com.ibm.gtmpa.domain.enumeration.IndustrySegmentEnum;
-import com.ibm.gtmpa.domain.util.JSR310DateConverters;
 import com.ibm.gtmpa.repository.PlanRepository;
 
 /**
@@ -107,6 +100,7 @@ public class PlanResourceIntTest {
 		plan.setDealsRequired(DEFAULT_DEALS_REQUIRED);
 		plan.setProposalDate(DEFAULT_PROPOSAL_DATE);
 		plan.setIndustrySegment(DEFAULT_INDUSTRY_SEGMENT);
+		plan.setCreationDate(LocalDate.now(ZoneId.systemDefault()));
 	}
 
 	@Test
@@ -245,7 +239,6 @@ public class PlanResourceIntTest {
 				.andExpect(jsonPath("$.[*].proposalDate").value(hasItem(DEFAULT_PROPOSAL_DATE.toString())))
 				.andExpect(jsonPath("$.[*].industrySegment").value(hasItem(DEFAULT_INDUSTRY_SEGMENT.toString())));
 	}
-
 
 	@Test
 	@Transactional

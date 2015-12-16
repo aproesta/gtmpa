@@ -149,6 +149,16 @@
 
 </uib-tab> <uib-tab heading="Detail">
 <div class="modal-body">
+	<div class="form-group">
+		<label for="field_status">Status</label> <select class="form-control"
+			name="status" ng-model="plan.status" id="field_status" required>
+			<option ng-repeat="rule in allRules">{{rule.name}}</option>
+		</select>
+		<div ng-show="editForm.status.$invalid">
+			<p class="help-block" ng-show="editForm.status.$error.required">This
+				field is required.</p>
+		</div>
+	</div>
 	<label>Partner Type</label> <select class="form-control" required>
 		<option>VAR</option>
 	</select> <label>Region</label> <select class="form-control" required>
@@ -159,19 +169,18 @@
 		<option>WA</option>
 		<option>SA</option>
 		<option>NT</option>
-	</select> 
-	</select> <label>IBM Products</label> <select class="form-control" required>
+	</select> </select> <label>IBM Products</label> <select class="form-control" required>
 		<option>Websphere</option>
 		<option>Tivoli</option>
 		<option>Rational</option>
 		<option>IM</option>
-	</select>
-	<label>Size Of Pipeline</label> <input type="number"
-		class="form-control" value="{{plan.revenueCommitment * 3}}" readonly /> <label>Revenue Booked Till</label> <input
-		type="number" class="form-control"  /> <label>% of
-		Revenue achieved</label> <input type="number" class="form-control" readonly />
-	<label>Target Customers</label> <input type="text"
-		class="form-control" value="Telco1, Telco2, Telco3"/>
+	</select> <label>Size Of Pipeline</label> <input type="number"
+		class="form-control" value="{{plan.revenueCommitment * 3}}" readonly />
+	<label>Revenue Booked Till</label> <input type="number"
+		class="form-control" /> <label>% of Revenue achieved</label> <input
+		type="number" class="form-control" readonly /> <label>Target
+		Customers</label> <input type="text" class="form-control"
+		value="Telco1, Telco2, Telco3" />
 </div>
 </uib-tab> <uib-tab heading="Comments">
 <div class="modal-body">

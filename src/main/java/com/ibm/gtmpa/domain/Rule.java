@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -21,6 +23,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "rule")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Rule implements Serializable {
+
+	private static final long serialVersionUID = -1618471547916468626L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -116,7 +120,7 @@ public class Rule implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Rule{" + "id=" + id + ", name='" + name + "'" + ", fieldSpec='" + fieldSpec + "'" + ", rule='" + rule
-				+ "'" + '}';
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
 	}
 }

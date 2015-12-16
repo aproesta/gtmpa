@@ -31,6 +31,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -222,17 +223,15 @@ public class RuleResourceIntTest {
 	@Test
 	public void testBusinessDayAdjustment() throws Exception {
 		// Test Business Day Adjustments
-		GregorianCalendar aSat = new GregorianCalendar(2015, 11, 21);
-		GregorianCalendar aSun = new GregorianCalendar(2015, 11, 22);
-		GregorianCalendar nextMonday = new GregorianCalendar(2015, 11, 23);
-		LocalDate aSaturday = JSR310DateConverters.DateToLocalDateConverter.INSTANCE.convert(aSat.getTime());
-		LocalDate aSunday = JSR310DateConverters.DateToLocalDateConverter.INSTANCE.convert(aSun.getTime());
+		LocalDate aSat = LocalDate.of(2015,11,21);
+		LocalDate aSun = LocalDate.of(2015, 11, 22);
+		LocalDate nextMonday = LocalDate.of(2015, 11, 23);
 
-		LocalDate theMonday = PlanMilestoneManager.nextBusinessDay(aSaturday);
-		assertThat(nextMonday.equals(theMonday));
+		LocalDate theMonday = PlanMilestoneManager.nextBusinessDay(aSat);
+		assertThat(nextMonday).isEqualTo(theMonday);
 
-		theMonday = PlanMilestoneManager.nextBusinessDay(aSunday);
-		assertThat(nextMonday.equals(theMonday));
+		theMonday = PlanMilestoneManager.nextBusinessDay(aSun);
+		assertThat(nextMonday).isEqualTo(theMonday);
 
 	}
 
@@ -252,45 +251,46 @@ public class RuleResourceIntTest {
 		// test counting e2e days
 		PlanMilestoneManager mpp = new PlanMilestoneManager(rules);
 		int totalDays = mpp.getEndToEndDayCount();
-		assertThat(totalDays == 100);
+		assertThat(totalDays).isEqualTo(110);
 
 		// search by name
 		Rule complete = mpp.getRuleByName(Plan.END_STATUS);
-		assertThat(complete.getName().equals(Plan.END_STATUS));
+		assertThat(complete.getName()).isEqualTo(Plan.END_STATUS);
 
+		// search by id
+		Rule completeID = mpp.getRuleByID(complete.getId());
+		assertThat(completeID.getName()).isEqualTo(complete.getName());
+		
 		// check next state
 		Rule initialDiscussionRule = mpp.getNextState(Plan.START_STATUS);
-		assertThat(initialDiscussionRule.getName().equals("Initial Discussion"));
+		assertThat(initialDiscussionRule.getName()).isEqualTo("Initial Discussion");
+
 
 		// Setting a Plan date field
 		Plan plan = new Plan();
 		LocalDate todaysDate = JSR310DateConverters.DateToLocalDateConverter.INSTANCE.convert(new Date());
 		boolean success = mpp.setDate(plan, initialDiscussionRule, todaysDate);
-		assertThat(success);
-		assertThat(plan.getInitialDiscussionDate().equals(todaysDate));
+		assertThat(success).isTrue();
+		assertThat(plan.getInitialDiscussionDate()).isEqualTo(todaysDate);
 
 		// test that the agreedGTMDate allows all the other milestone dates to
 		// be acheived
 		boolean isValid = mpp.isAgreedGTMDateValid(todaysDate);
-		assertThat(!isValid);
+		assertThat(isValid).isFalse();
 
 		isValid = mpp.isAgreedGTMDateValid(todaysDate.plusDays(totalDays));
-		assertThat(isValid);
+		assertThat(isValid).isTrue();
 
 	}
-
-	@Test
-	@Transactional
-	public void testInitialisingPlan() throws Exception {
-
-		// Set a target date and initialise the milestones
-		// Start with a simple set of rules first
+	
+	List<Rule> getSimpleRules() {
 		List<Rule> simpleRules = new ArrayList<Rule>();
 		Rule firstRule = new Rule();
 		firstRule.setId(1L);
 		firstRule.setName(Plan.START_STATUS);
 		firstRule.setRule("10");
 		firstRule.setForwardState("2");
+		firstRule.setBackState("5");
 
 		Rule secondRule = new Rule();
 		secondRule.setId(2L);
@@ -304,44 +304,98 @@ public class RuleResourceIntTest {
 		thirdRule.setId(3L);
 		thirdRule.setName("Sales Competency");
 		thirdRule.setFieldSpec("salesCompetencyDate");
-		thirdRule.setRule("5");
+		thirdRule.setRule("10");
 		thirdRule.setForwardState("4");
 		thirdRule.setBackState("2");
 
 		Rule lastRule = new Rule();
 		lastRule.setId(4L);
 		lastRule.setName(Plan.END_STATUS);
-		lastRule.setRule("10");
+		lastRule.setRule("0");
 		lastRule.setBackState("3");
 		lastRule.setFieldSpec("completeDate");
+
+		Rule defRule = new Rule();
+		defRule.setName(Plan.INVALID_STATUS);
+		defRule.setId(5L);
+		defRule.setForwardState("1");
+		defRule.setBackState("1");
 
 		simpleRules.add(firstRule);
 		simpleRules.add(secondRule);
 		simpleRules.add(thirdRule);
 		simpleRules.add(lastRule);
+		simpleRules.add(defRule);
+		
+		return simpleRules;
+	}
 
-		LocalDate todaysDate = JSR310DateConverters.DateToLocalDateConverter.INSTANCE.convert(new Date());
+	@Test
+	@Transactional
+	public void testValidStates() throws Exception {
+		List<Rule> simpleRules = getSimpleRules();
+
+		PlanMilestoneManager pmm = new PlanMilestoneManager(simpleRules);
+
+		List<Rule> validStates = pmm.getValidStates(Plan.START_STATUS);
+		String nextState = "Initial Discussion";
+		String subsequentState = "Sales Competency";
+
+		// should contain the next state
+		assertThat(validStates).contains(pmm.getRuleByName(nextState));
+
+		// should contain the current state
+		assertThat(validStates).contains(pmm.getRuleByName(Plan.START_STATUS));
+
+		// should contain invalid state
+		assertThat(validStates).contains(pmm.getRuleByName(Plan.INVALID_STATUS));
+
+		// there should be no other states
+		assertThat(validStates).hasSize(3);
+
+		// should be able to go forward and backward and stay on the current state
+		validStates = pmm.getValidStates(nextState);
+		assertThat(validStates).contains(pmm.getRuleByName(Plan.START_STATUS));
+		assertThat(validStates).contains(pmm.getRuleByName(nextState));
+		assertThat(validStates).contains(pmm.getRuleByName(subsequentState));
+
+		// there should be no other states
+		assertThat(validStates).hasSize(4);
+
+		
+	}
+	
+	
+	@Test
+	@Transactional
+	public void testInitialisingPlan() throws Exception {
+
+		// Set a target date and initialise the milestones
+		// Start with a simple set of rules first
+		List<Rule> simpleRules = getSimpleRules();
+
+		LocalDate todaysDate = LocalDate.now(ZoneId.systemDefault());
 
 		PlanMilestoneManager simplePMM = new PlanMilestoneManager(simpleRules);
 		int simpleE2Edays = simplePMM.getEndToEndDayCount();
-		assertThat(simpleE2Edays == 20);
+		assertThat(simpleE2Edays).isEqualTo(30);
 
 		LocalDate agDate = todaysDate.plusDays(simpleE2Edays);
 		Plan simplePlan = new Plan();
 		simplePlan.setAgreedGTMDate(agDate);
-		assertThat(simplePMM.isAgreedGTMDateValid(agDate));
+		assertThat(simplePMM.isAgreedGTMDateValid(agDate)).isTrue();
 		
 		// What do we expect Next??
 		simplePMM.initialisePlanDates(simplePlan);
 
-		// The Plan.initialDiscussionDate should be set to agDate - 10 days
+		// The Plan.initialDiscussionDate should be set to agDate - 20 days
 		// Need to check for businessDay adjustments too
-		LocalDate targetInitialDiscussionDate = PlanMilestoneManager.nextBusinessDay(agDate.minusDays(10));
-		assertThat(simplePlan.getInitialDiscussionDate().equals(targetInitialDiscussionDate));
+		LocalDate targetInitialDiscussionDate = PlanMilestoneManager.nextBusinessDay(agDate.minusDays(20));
+		assertThat(simplePlan.getInitialDiscussionDate()).isEqualTo(targetInitialDiscussionDate);
 
-		// The Plan.salesCompetencyDate should be set to agDate - 15 days
-		LocalDate salesCompetencyDate = PlanMilestoneManager.nextBusinessDay(agDate.minusDays(15));
-		assertThat(simplePlan.getSalesCompetencyDate().equals(salesCompetencyDate));
+		// The Plan.salesCompetencyDate should be set to agDate - 10 days
+		LocalDate salesCompetencyDate = PlanMilestoneManager.nextBusinessDay(agDate.minusDays(10));
+		assertThat(simplePlan.getSalesCompetencyDate()).isEqualTo(salesCompetencyDate);
 
 	}
 

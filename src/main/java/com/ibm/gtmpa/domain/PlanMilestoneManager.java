@@ -3,9 +3,11 @@ package com.ibm.gtmpa.domain;
 import java.lang.reflect.Method;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -31,6 +33,52 @@ public class PlanMilestoneManager {
 			}
 		}
 		return rule;
+	}
+
+	public Rule getRuleByID(Long id) {
+		return map.get(id);
+	}
+
+	public List<Rule> getValidStates(String currentState) {
+		assert(currentState != null);
+		
+		List<Rule> rules = new ArrayList<Rule>();
+
+		Rule currentStateRule = getRuleByName(currentState);
+		Rule backRule = getBackState(currentState);
+		Rule forwardRule = getNextState(currentState);
+		Rule invalidRule = getRuleByName(Plan.INVALID_STATUS);
+		
+		if (currentStateRule != null) {
+			rules.add(currentStateRule);
+		}
+
+		if (backRule != null) {
+			rules.add(backRule);
+		}
+
+		if (forwardRule != null) {
+			rules.add(forwardRule);
+		}
+
+		// Add Invalid
+		if (invalidRule != null && !rules.contains(invalidRule)) {
+			rules.add(invalidRule);
+		}
+
+		return rules;
+	}
+
+	public Rule getBackState(String currentState) {
+		Rule backRule = null;
+		Rule currentStateRule = getRuleByName(currentState);
+		if (currentStateRule != null) {
+			String backState = currentStateRule.getBackState();
+			if (NumberUtils.isNumber(backState)) {
+				backRule = map.get(new Long(backState));
+			}
+		}
+		return backRule;
 	}
 
 	public Rule getNextState(String currentState) {

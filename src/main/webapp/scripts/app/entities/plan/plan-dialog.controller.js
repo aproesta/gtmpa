@@ -1,14 +1,16 @@
 'use strict';
 
 angular.module('gtmpaApp').controller('PlanDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Plan', 'Partner',
-        function($scope, $stateParams, $modalInstance, entity, Plan, Partner) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Plan', 'Partner', 'Rule',
+        function($scope, $stateParams, $modalInstance, entity, Plan, Partner, Rule) {
 
         $scope.plan = entity;
         $scope.partners = Partner.query();
+        $scope.allRules = Rule.state({currentState: 'New'});
         $scope.load = function(id) {
             Plan.get({id : id}, function(result) {
                 $scope.plan = result;
+                $scope.allRules = Rule.state({currentState: $scope.plan.status});
             });
         };
 
@@ -27,6 +29,7 @@ angular.module('gtmpaApp').controller('PlanDialogController',
             if ($scope.plan.id != null) {
                 Plan.update($scope.plan, onSaveSuccess, onSaveError);
             } else {
+            	$scope.plan.creationDate = new Date();
                 Plan.save($scope.plan, onSaveSuccess, onSaveError);
             }
         };
@@ -108,4 +111,5 @@ angular.module('gtmpaApp').controller('PlanDialogController',
         $scope.c3_labels = ["Telco1", "Telco2", "Telco3"];
         $scope.c3_data = [300, 500, 100];
 
+        $scope.load($stateParams.id);
 }]);

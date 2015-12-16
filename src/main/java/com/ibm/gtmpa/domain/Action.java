@@ -14,13 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.ibm.gtmpa.domain.enumeration.ActionStatusEnum;
-import com.ibm.gtmpa.domain.enumeration.IndustrySegmentEnum;
 
 /**
  * A Action.
@@ -30,125 +28,124 @@ import com.ibm.gtmpa.domain.enumeration.IndustrySegmentEnum;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Action implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	private static final long serialVersionUID = 746814008611586199L;
 
-    @NotNull
-    @Column(name = "log_date", nullable = false)
-    private LocalDate logDate;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @Column(name = "description", nullable = true)
-    private String description;
+	@NotNull
+	@Column(name = "log_date", nullable = false)
+	private LocalDate logDate;
 
-    @Column(name = "action_items")
-    private String actionItems;
+	@Column(name = "description", nullable = true)
+	private String description;
 
-    @Column(name = "next_action_date", nullable = false)
-    private LocalDate nextActionDate;
+	@Column(name = "action_items")
+	private String actionItems;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "staus", nullable = true)
-    private ActionStatusEnum status;
-    
-    @ManyToOne
-    private Plan plan;
-	//ndimari
+	@Column(name = "next_action_date", nullable = false)
+	private LocalDate nextActionDate;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "staus", nullable = true)
+	private ActionStatusEnum status;
+
 	@ManyToOne
-    private User user;
+	private Plan plan;
+	// ndimari
+	@ManyToOne
+	private User user;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public LocalDate getLogDate() {
-        return logDate;
-    }
+	public LocalDate getLogDate() {
+		return logDate;
+	}
 
-    public void setLogDate(LocalDate logDate) {
-        this.logDate = logDate;
-    }
+	public void setLogDate(LocalDate logDate) {
+		this.logDate = logDate;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getActionItems() {
-        return actionItems;
-    }
+	public String getActionItems() {
+		return actionItems;
+	}
 
-    public void setActionItems(String actionItems) {
-        this.actionItems = actionItems;
-    }
+	public void setActionItems(String actionItems) {
+		this.actionItems = actionItems;
+	}
 
-    public LocalDate getNextActionDate() {
-        return nextActionDate;
-    }
+	public LocalDate getNextActionDate() {
+		return nextActionDate;
+	}
 
-    public void setNextActionDate(LocalDate nextActionDate) {
-        this.nextActionDate = nextActionDate;
-    }
+	public void setNextActionDate(LocalDate nextActionDate) {
+		this.nextActionDate = nextActionDate;
+	}
 
-    public Plan getPlan() {
-        return plan;
-    }
+	public Plan getPlan() {
+		return plan;
+	}
 
-    public void setPlan(Plan plan) {
-        this.plan = plan;
-    }
-	
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+
 	public User getUser() {
-        return user;
-    }
+		return user;
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-    public ActionStatusEnum getStatus() {
-        return status;
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    public void setStatus(ActionStatusEnum status) {
-        this.status = status;
-    }
+	public ActionStatusEnum getStatus() {
+		return status;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setStatus(ActionStatusEnum status) {
+		this.status = status;
+	}
 
-        Action action = (Action) o;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-        if ( ! Objects.equals(id, action.id)) return false;
+		Action action = (Action) o;
 
-        return true;
-    }
+		if (!Objects.equals(id, action.id))
+			return false;
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "Action{" +
-            "id=" + id +
-            ", logDate='" + logDate + "'" +
-            ", description='" + description + "'" +
-            ", actionItems='" + actionItems + "'" +
-            ", nextActionDate='" + nextActionDate + "'" +
-            '}';
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(id);
+	}
+
+	@Override
+	public String toString() {
+		return "Action{" + "id=" + id + ", logDate='" + logDate + "'" + ", description='" + description + "'"
+				+ ", actionItems='" + actionItems + "'" + ", nextActionDate='" + nextActionDate + "'" + '}';
+	}
 }

@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -29,8 +31,11 @@ import com.ibm.gtmpa.domain.enumeration.IndustrySegmentEnum;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Plan implements Serializable {
 
-    public static String START_STATUS = "New";
-    public static String END_STATUS = "Complete";
+	private static final long serialVersionUID = 69752347758587250L;
+	
+	public static String START_STATUS = "New";
+	public static String END_STATUS = "Complete";
+	public static String INVALID_STATUS = "Invalid";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,6 +61,19 @@ public class Plan implements Serializable {
 	@NotNull
 	@Column(name = "agreed_gtmdate", nullable = false)
 	private LocalDate agreedGTMDate;
+
+	@NotNull
+	@Column(name = "creation_date", nullable = false)
+
+	private LocalDate creationDate;
+
+	public LocalDate getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(LocalDate creationDate) {
+		this.creationDate = creationDate;
+	}
 
 	@NotNull
 	@Column(name = "revenue_commitment", nullable = false)
@@ -286,8 +304,6 @@ public class Plan implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Plan{" + "id=" + id + ", solutionName='" + solutionName + "'" + ", agreedGTMDate='" + agreedGTMDate
-				+ "'" + ", revenueCommitment='" + revenueCommitment + "'" + ", dealsRequired='" + dealsRequired + "'"
-				+ ", proposalDate='" + proposalDate + "'" + ", industrySegment='" + industrySegment + "'" + '}';
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 }
