@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="ndimari (generated)" id="1448510821140-1">
+        <addColumn tableName="partneruserlink">
+            <column name="partner_id" type="int8"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1448510821140-2">
+        <addColumn tableName="partneruserlink">
+            <column name="user_id" type="int8"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1448510821140-3">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="partneruserlink" constraintName="FK_2u813dq2tm31399kkrs8j2qiu" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="ndimari (generated)" id="1448510821140-4">
+        <addForeignKeyConstraint baseColumnNames="partner_id" baseTableName="partneruserlink" constraintName="FK_87f3ah701ye48xq6hg4bqgga7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="partner"/>
+    </changeSet>
+</databaseChangeLog>

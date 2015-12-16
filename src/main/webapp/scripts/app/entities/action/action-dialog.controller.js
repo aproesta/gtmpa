@@ -43,6 +43,7 @@ angular.module('gtmpaApp').controller('ActionDialogController',
         };
         
         $scope.clear = function() {
+        	
             $modalInstance.dismiss('cancel');
         };
         
