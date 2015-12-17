@@ -2,6 +2,7 @@ package com.ibm.gtmpa.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,7 @@ import com.ibm.gtmpa.domain.PlanMilestoneManager;
 import com.ibm.gtmpa.domain.Rule;
 import com.ibm.gtmpa.repository.PlanRepository;
 import com.ibm.gtmpa.repository.RuleRepository;
+import com.ibm.gtmpa.service.util.ObjectDiffer;
 import com.ibm.gtmpa.web.rest.util.HeaderUtil;
 import com.ibm.gtmpa.web.rest.util.PaginationUtil;
 
@@ -65,6 +67,8 @@ public class PlanResource {
 			pmm.initialisePlanDates(plan);
 		}
 
+		plan.setHistory(plan.getLastModified() + " " + plan.getLastModifiedBy() + " Created\n\n");
+
 		Plan result = planRepository.save(plan);
 		return ResponseEntity.created(new URI("/api/plans/" + result.getId()))
 				.headers(HeaderUtil.createEntityCreationAlert("plan", result.getId().toString())).body(result);
@@ -80,6 +84,15 @@ public class PlanResource {
 		if (plan.getId() == null) {
 			return createPlan(plan);
 		}
+
+		// Update the history
+		String diff = getDiff(plan);
+		if (diff != null) {
+			String history = plan.getHistory();
+			plan.setHistory(
+					plan.getLastModified() + " " + plan.getLastModifiedBy() + "\n" + "\t" + diff + "\n\n" + history);
+		}
+
 		Plan result = planRepository.save(plan);
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert("plan", plan.getId().toString()))
 				.body(result);
@@ -117,4 +130,27 @@ public class PlanResource {
 		planRepository.delete(id);
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("plan", id.toString())).build();
 	}
+
+	private String getDiff(Plan newPlan) {
+		String diff = null;
+
+		Plan oldPlan = planRepository.findOne(newPlan.getId());
+
+		if (oldPlan != null) {
+
+			ArrayList<String> ignoreOnly = new ArrayList<String>();
+			ignoreOnly.add("lastModified");
+			ignoreOnly.add("lastModifiedBy");
+
+			ArrayList<String> markOnly = new ArrayList<String>();
+			markOnly.add("comments");
+			markOnly.add("history");
+
+			ObjectDiffer differ = new ObjectDiffer(ignoreOnly, markOnly);
+			diff = differ.diff(oldPlan, newPlan);
+		}
+		return diff;
+
+	}
+
 }
