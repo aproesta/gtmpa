@@ -48,16 +48,16 @@ public class PlanMilestoneManager {
 		Rule backRule = getBackState(currentState);
 		Rule forwardRule = getNextState(currentState);
 		Rule invalidRule = getRuleByName(Plan.INVALID_STATUS);
+
+		if (backRule != null && !rules.contains(backRule)) {
+			rules.add(backRule);
+		}
 		
-		if (currentStateRule != null) {
+		if (currentStateRule != null && !rules.contains(currentStateRule)) {
 			rules.add(currentStateRule);
 		}
 
-		if (backRule != null) {
-			rules.add(backRule);
-		}
-
-		if (forwardRule != null) {
+		if (forwardRule != null && !rules.contains(forwardRule)) {
 			rules.add(forwardRule);
 		}
 

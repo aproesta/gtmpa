@@ -1,17 +1,24 @@
 'use strict';
 
 angular.module('gtmpaApp').controller('PlanDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Plan', 'Partner', 'Rule',
-        function($scope, $stateParams, $modalInstance, entity, Plan, Partner, Rule) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Plan', 'Partner', 'Rule', 'Principal',
+        function($scope, $stateParams, $modalInstance, entity, Plan, Partner, Rule, Principal) {
+
+	 Principal.identity().then(function(account) {
+		 
+	    $scope.account = account;
 
         $scope.plan = entity;
         $scope.partners = Partner.query();
         $scope.allRules = Rule.state({currentState: 'New'});
         $scope.load = function(id) {
-            Plan.get({id : id}, function(result) {
-                $scope.plan = result;
-                $scope.allRules = Rule.state({currentState: $scope.plan.status});
-            });
+        	if (id) {
+        		Plan.get({id : id}, function(result) {
+	                $scope.plan = result;
+	                // returns only valid transition states based on current state 
+	                $scope.allRules = Rule.state({currentState: $scope.plan.status});
+	            });
+        	}
         };
 
         var onSaveSuccess = function (result) {
@@ -26,6 +33,8 @@ angular.module('gtmpaApp').controller('PlanDialogController',
 
         $scope.save = function () {
             $scope.isSaving = true;
+            $scope.plan.lastModified = new Date();
+            $scope.plan.lastModifiedBy = $scope.account.login;
             if ($scope.plan.id != null) {
                 Plan.update($scope.plan, onSaveSuccess, onSaveError);
             } else {
@@ -112,4 +121,6 @@ angular.module('gtmpaApp').controller('PlanDialogController',
         $scope.c3_data = [300, 500, 100];
 
         $scope.load($stateParams.id);
+	});
+
 }]);

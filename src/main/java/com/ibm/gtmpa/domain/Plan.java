@@ -2,6 +2,7 @@ package com.ibm.gtmpa.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -32,7 +33,7 @@ import com.ibm.gtmpa.domain.enumeration.IndustrySegmentEnum;
 public class Plan implements Serializable {
 
 	private static final long serialVersionUID = 69752347758587250L;
-	
+
 	public static String START_STATUS = "New";
 	public static String END_STATUS = "Complete";
 	public static String INVALID_STATUS = "Invalid";
@@ -57,6 +58,99 @@ public class Plan implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	@Column(name = "comments", columnDefinition = "LONGTEXT", nullable = true)
+	private String comments;
+
+	@Column(name = "history", columnDefinition = "LONGTEXT", nullable = true)
+	private String history;
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+
+	public String getHistory() {
+		return history;
+	}
+
+	public void setHistory(String history) {
+		this.history = history;
+	}
+
+	@NotNull
+	@Column(name = "partner_type", length = 100, nullable = false)
+	private String partnerType;
+
+	@NotNull
+	@Column(name = "region", length = 100, nullable = false)
+	private String region;
+
+	public String getPartnerType() {
+		return partnerType;
+	}
+
+	public void setPartnerType(String partnerType) {
+		this.partnerType = partnerType;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public Float getRevenueBooked() {
+		return revenueBooked;
+	}
+
+	public void setRevenueBooked(Float revenueBooked) {
+		this.revenueBooked = revenueBooked;
+	}
+
+	@NotNull
+	@Column(name = "last_modified_by", nullable = false)
+	private String lastModifiedBy;
+
+	@NotNull
+	@Column(name = "last_modified", nullable = false)
+	private String lastModified;
+
+	public String getLastModifiedBy() {
+		return lastModifiedBy;
+	}
+
+	public void setLastModifiedBy(String lastModifiedBy) {
+		this.lastModifiedBy = lastModifiedBy;
+	}
+
+	public String getLastModified() {
+		return lastModified;
+	}
+
+	public void setLastModified(String lastModified) {
+		this.lastModified = lastModified;
+	}
+
+	@NotNull
+	@Column(name = "brand", length = 100, nullable = false)
+	private String brand;
+
+	@Column(name = "revenue_booked", nullable = true)
+	private Float revenueBooked;
 
 	@NotNull
 	@Column(name = "agreed_gtmdate", nullable = false)
