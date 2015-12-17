@@ -34,7 +34,7 @@ angular.module('gtmpaApp').controller('PlanDialogController',
         $scope.save = function () {
             $scope.isSaving = true;
             $scope.plan.lastModified = new Date().toUTCString();
-            $scope.plan.lastModifiedBy = $scope.account.login;
+            $scope.plan.lastModifiedBy = "@" + $scope.account.login;
             if ($scope.plan.id != null) {
                 Plan.update($scope.plan, onSaveSuccess, onSaveError);
             } else {
@@ -46,7 +46,16 @@ angular.module('gtmpaApp').controller('PlanDialogController',
         $scope.clear = function() {
             $modalInstance.dismiss('cancel');
         };
-
+        
+        $scope.comment = {comment: ''};
+        
+        $scope.newComment = function() {
+        	var currentComment = $scope.plan.comments || '';
+        	if ($scope.comment.comment) {
+        		$scope.plan.comments = new Date().toUTCString() + " @" + $scope.account.login + "\n" + $scope.comment.comment + "\n\n" + currentComment;
+        		$scope.comment.comment = '';
+        	}
+        };
         
         /*
          * DatePicker for agreedToMarket
@@ -79,23 +88,7 @@ angular.module('gtmpaApp').controller('PlanDialogController',
     	$scope.statusProposal = {
     		opened: false
     	};
-    	
-    	/*
-    	 * Comments
-    	 */
-    	$scope.newComment = "";
-    	$scope.comments = "@david 2015-09-12 12:18 pm\nMeeting held to discuss planning approach.\n\n";
-    	$scope.comments = $scope.comments + "@arthur 2015-10-05 5:10 am\nNew actions documented to progress planning schedule.\n\n";
-    	$scope.comments = $scope.comments + "@peter 2015-11-07 2:30 pm\nExecutive sponsor David Smith now sponsoring solution.\n\n";
-    	
-    	/*
-    	 * History
-    	 */
-    	$scope.history = "@david 2015-09-12 12:18 pm\nSolution Name='WBS Solution' -> 'WAS Solution'.\n\n";
-    	$scope.history = $scope.history + "@arthur 2015-10-05 5:10 am\nProposal Date='2015-10-10' -> '2015-11-01'.\n\n";
-    	$scope.history = $scope.history + "@peter 2015-10-07 12:30 pm\nNew comment added.\n\n";
-    	$scope.history = $scope.history + "@anne 2015-10-17 4:30 pm\nComplete Date='2015-10-01' -> '2015-10-10.\n\n";
-
+    	    	
     	/*
     	 * Charts
     	 */

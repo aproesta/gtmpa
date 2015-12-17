@@ -199,25 +199,29 @@
 </form>
 </uib-tab> <uib-tab heading="Comments">
 <div class="modal-body">
-	<form name="commentsForm" role="form" novalidate ng-submit="addComment()" show-validation>
-
-		<div class="form-group">
-			<label for="field_newComment">New Comment</label>
-			<p class="input-group">
-				<input type="text" id="field_newComment" class="form-control" ng-model="newComment" name="newComment" />
-				<span class="input-group-btn">
-					<button type="button" class="btn btn-default" ng-click="newComment($event)">
-						<i class="glyphicon glyphicon-save"></i>
-					</button>
-				</span>
-			</p>
-			<div ng-show="commentsForm.newComment.$invalid">
-				<p class="help-block" ng-show="commentsForm.newComment.$error.required">This field is required.</p>
-			</div>
-		</div>
-	</form>
-	<label>Comments</label>
-	<textarea class="form-control" rows="22" ng-model="plan.comments" readonly></textarea>
+	<div class="form-group">
+		<label>New Comment</label>
+		<p class="input-group">
+			<input type="text" class="form-control" ng-model="comment.comment" />
+			<span class="input-group-btn">
+				<button type="submit" class="btn btn-default" ng-click="newComment()">
+					<i class="glyphicon glyphicon-save"></i>
+				</button>
+			</span>
+		</p>
+	</div>
+	<div class="form-group">
+		<label>Comments</label>
+		<textarea class="form-control" rows="22" ng-model="plan.comments" readonly></textarea>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+		<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+	</button>
+	<button type="submit" ng-disabled="editForm.$invalid || editDetailForm.$invalid || isSaving" class="btn btn-primary" ng-click="save()">
+		<span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+	</button>
 </div>
 </uib-tab> <uib-tab heading="Analysis">
 <div class="modal-body">

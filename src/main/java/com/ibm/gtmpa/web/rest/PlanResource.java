@@ -87,7 +87,7 @@ public class PlanResource {
 
 		// Update the history
 		String diff = getDiff(plan);
-		if (diff != null) {
+		if (diff != null && diff.length() > 0) {
 			String history = plan.getHistory();
 			plan.setHistory(
 					plan.getLastModified() + " " + plan.getLastModifiedBy() + "\n" + "\t" + diff + "\n\n" + history);
