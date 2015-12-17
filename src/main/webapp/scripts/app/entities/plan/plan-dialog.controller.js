@@ -33,7 +33,7 @@ angular.module('gtmpaApp').controller('PlanDialogController',
 
         $scope.save = function () {
             $scope.isSaving = true;
-            $scope.plan.lastModified = new Date();
+            $scope.plan.lastModified = new Date().toUTCString();
             $scope.plan.lastModifiedBy = $scope.account.login;
             if ($scope.plan.id != null) {
                 Plan.update($scope.plan, onSaveSuccess, onSaveError);
