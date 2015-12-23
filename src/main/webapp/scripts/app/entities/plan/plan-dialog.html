@@ -1,112 +1,96 @@
 
 <div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal"
-		aria-hidden="true" ng-click="clear()">&times;</button>
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
 	<h4 class="modal-title" id="myPlanLabel">Create or edit a Plan</h4>
 </div>
 
 <uib-tabset> <uib-tab heading="Overview">
-<form name="editForm" role="form" novalidate ng-submit="save()"
-	show-validation>
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
 
 	<div class="modal-body">
 		<jh-alert-error></jh-alert-error>
 
 		<div class="form-group">
-			<label for="id">ID</label> <input type="text" class="form-control"
-				id="id" name="id" ng-model="plan.id" readonly />
+			<label for="id">ID</label>
+			<input type="text" class="form-control" id="id" name="id" ng-model="plan.id" readonly />
 		</div>
 		<div class="form-group">
-			<label for="field_solutionName">Solution Name</label> <input
-				type="text" class="form-control" name="solutionName"
-				id="field_solutionName" ng-model="plan.solutionName" required
-				ng-minlength="3" ng-maxlength="30" />
+			<label for="field_solutionName">Solution Name</label>
+			<input type="text" class="form-control" name="solutionName" id="field_solutionName" ng-model="plan.solutionName"
+				required ng-minlength="3" ng-maxlength="30" />
 			<div ng-show="editForm.solutionName.$invalid">
-				<p class="help-block"
-					ng-show="editForm.solutionName.$error.required">Required. Name
-					of the application for this joint proposal with IBM</p>
-				<p class="help-block"
-					ng-show="editForm.solutionName.$error.minlength"
-					translate-value-min="3">This field is required to be at least 3
-					characters.</p>
-				<p class="help-block"
-					ng-show="editForm.solutionName.$error.maxlength"
-					translate-value-max="30">This field cannot be longer than 30
-					characters.</p>
+				<p class="help-block" ng-show="editForm.solutionName.$error.required">Required. Name of the application for this
+					joint proposal with IBM</p>
+				<p class="help-block" ng-show="editForm.solutionName.$error.minlength" translate-value-min="3">This field is
+					required to be at least 3 characters.</p>
+				<p class="help-block" ng-show="editForm.solutionName.$error.maxlength" translate-value-max="30">This field
+					cannot be longer than 30 characters.</p>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="field_agreedGTMDate">Agreed GTM Date</label>
 			<p class="input-group">
-				<input type="text" id="field_agreedGTMDate" class="form-control"
-					uib-datepicker-popup="dd-MM-yyyy" ng-model="plan.agreedGTMDate"
-					is-open="statusGTM.opened" ng-required="true"
-					min-date="aGTMminDate" name="agreedGTMDate" /> <span
-					class="input-group-btn">
-					<button type="button" class="btn btn-default"
-						ng-click="openGTM($event)">
+				<input type="text" id="field_agreedGTMDate" class="form-control" uib-datepicker-popup="dd-MM-yyyy"
+					ng-model="plan.agreedGTMDate" is-open="statusGTM.opened" ng-required="true" min-date="aGTMminDate"
+					name="agreedGTMDate" />
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="openGTM($event)">
 						<i class="glyphicon glyphicon-calendar"></i>
 					</button>
 				</span>
 			</p>
-			<!-- TODO below is not working -->
 			<div ng-show="editForm.agreedGTMDate.$invalid">
-				<p class="help-block"
-					ng-show="editForm.agreedGTMDate.$error.required">This field is
-					required.</p>
+				<p class="help-block" ng-show="editForm.agreedGTMDate.$error.required">This field is required.</p>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label for="field_revenueCommitment">Goal</label> <input
-				type="number" class="form-control" name="revenueCommitment"
-				id="field_revenueCommitment" ng-model="plan.revenueCommitment"
-				required />
+			<label for="field_revenueCommitment">Goal</label>
+			<input type="number" class="form-control" name="revenueCommitment" id="field_revenueCommitment"
+				ng-model="plan.revenueCommitment" required />
 			<div ng-show="editForm.revenueCommitment.$invalid">
-				<p class="help-block"
-					ng-show="editForm.revenueCommitment.$error.required">Required.
-					Amount of joint revenue that can be expected via this arrangement</p>
-				<p class="help-block"
-					ng-show="editForm.revenueCommitment.$error.number">This field
-					should be a number.</p>
+				<p class="help-block" ng-show="editForm.revenueCommitment.$error.required">Required. Amount of joint revenue
+					that can be expected via this arrangement</p>
+				<p class="help-block" ng-show="editForm.revenueCommitment.$error.number">This field should be a number.</p>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="field_dealsRequired">Deals Required</label> <input
-				type="number" class="form-control" name="dealsRequired"
-				id="field_dealsRequired" ng-model="plan.dealsRequired" required />
+			<label for="field_dealsRequired">Deals Required</label>
+			<input type="number" class="form-control" name="dealsRequired" id="field_dealsRequired" ng-model="plan.dealsRequired"
+				required />
 			<div ng-show="editForm.dealsRequired.$invalid">
-				<p class="help-block"
-					ng-show="editForm.dealsRequired.$error.required">Required.
-					Enter the total number of deals to achieve the revenue target</p>
-				<p class="help-block" ng-show="editForm.dealsRequired.$error.number">
-					This field should be a number.</p>
+				<p class="help-block" ng-show="editForm.dealsRequired.$error.required">Required. Enter the total number of deals
+					to achieve the revenue target</p>
+				<p class="help-block" ng-show="editForm.dealsRequired.$error.number">This field should be a number.</p>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="field_proposalDate">Proposal Date</label>
 			<p class="input-group">
-				<input type="text" id="field_proposalDate" class="form-control"
-					uib-datepicker-popup="dd-MM-yyyy" ng-model="plan.proposalDate"
-					is-open="statusProposal.opened" ng-required="true"
-					min-date="proposalMinDate" name="proposalDate" /> <span
-					class="input-group-btn">
-					<button type="button" class="btn btn-default"
-						ng-click="openProposal($event)">
+				<input type="text" id="field_proposalDate" class="form-control" uib-datepicker-popup="dd-MM-yyyy"
+					ng-model="plan.proposalDate" is-open="statusProposal.opened" ng-required="true" min-date="proposalMinDate"
+					name="proposalDate" />
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="openProposal($event)">
 						<i class="glyphicon glyphicon-calendar"></i>
 					</button>
 				</span>
 			</p>
 			<div ng-show="editForm.proposalDate.$invalid">
-				<p class="help-block"
-					ng-show="editForm.proposalDate.$error.required">This field is
-					required.</p>
+				<p class="help-block" ng-show="editForm.proposalDate.$error.required">This field is required.</p>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="field_industrySegment">Industry Segment</label> <select
-				class="form-control" name="industrySegment"
-				ng-model="plan.industrySegment" id="field_industrySegment" required>
+			<label for="field_partner">Partner</label>
+			<select class="form-control" id="field_partner" name="partner" ng-model="plan.partner"
+				ng-options="partner as partner.name for partner in partners track by partner.id">
+				<option value=""></option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="field_industrySegment">Industry Segment</label>
+			<select class="form-control" name="industrySegment" ng-model="plan.industrySegment" id="field_industrySegment"
+				required>
 				<option value="Banking">Banking</option>
 				<option value="Government">Government</option>
 				<option value="Health">Health</option>
@@ -120,106 +104,142 @@
 				<option value="Cross_Industry">Cross_Industry</option>
 			</select>
 			<div ng-show="editForm.industrySegment.$invalid">
-				<p class="help-block"
-					ng-show="editForm.industrySegment.$error.required">This field
-					is required.</p>
+				<p class="help-block" ng-show="editForm.industrySegment.$error.required">This field is required.</p>
 			</div>
 		</div>
 
-		<div class="form-group">
-			<label for="field_partner">Partner</label> <select
-				class="form-control" id="field_partner" name="partner"
-				ng-model="plan.partner"
-				ng-options="partner as partner.name for partner in partners track by partner.id">
-				<option value=""></option>
-			</select>
-		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal"
-			ng-click="clear()">
+		<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
 			<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
 		</button>
-		<button type="submit" ng-disabled="editForm.$invalid || isSaving"
-			class="btn btn-primary">
+		<button type="submit" ng-disabled="editForm.$invalid || editDetailForm.$invalid || isSaving" class="btn btn-primary">
 			<span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
 		</button>
 	</div>
 </form>
 
 </uib-tab> <uib-tab heading="Detail">
-<div class="modal-body">
-	<label>Partner Type</label> <select class="form-control" required>
-		<option>VAR</option>
-	</select> <label>Region</label> <select class="form-control" required>
-		<option>Victoria</option>
-		<option>NSW</option>
-		<option>ACT</option>
-		<option>Tasmania</option>
-		<option>WA</option>
-		<option>SA</option>
-		<option>NT</option>
-	</select> 
-	</select> <label>IBM Products</label> <select class="form-control" required>
-		<option>Websphere</option>
-		<option>Tivoli</option>
-		<option>Rational</option>
-		<option>IM</option>
-	</select>
-	<label>Size Of Pipeline</label> <input type="number"
-		class="form-control" value="{{plan.revenueCommitment * 3}}" readonly /> <label>Revenue Booked Till</label> <input
-		type="number" class="form-control"  /> <label>% of
-		Revenue achieved</label> <input type="number" class="form-control" readonly />
-	<label>Target Customers</label> <input type="text"
-		class="form-control" value="Telco1, Telco2, Telco3"/>
-</div>
-</uib-tab> <uib-tab heading="Comments">
-<div class="modal-body">
-	<form name="commentsForm" role="form" novalidate
-		ng-submit="addComment()" show-validation>
+<form name="editDetailForm" role="form" novalidate ng-submit="save()" show-validation>
+
+	<div class="modal-body">
+		<jh-alert-error></jh-alert-error>
 
 		<div class="form-group">
-			<label for="field_newComment">New Comment</label>
-			<p class="input-group">
-				<input type="text" id="field_newComment" class="form-control"
-					ng-model="newComment" name="newComment" /> <span
-					class="input-group-btn">
-					<button type="button" class="btn btn-default"
-						ng-click="newComment($event)">
-						<i class="glyphicon glyphicon-save"></i>
-					</button>
-				</span>
-			</p>
-			<div ng-show="commentsForm.newComment.$invalid">
-				<p class="help-block"
-					ng-show="commentsForm.newComment.$error.required">This field is
-					required.</p>
+			<label for="field_status">Status</label>
+			<select class="form-control" name="status" ng-model="plan.status" ng-init="plan.status = 'New'" id="field_status"
+				required>
+				<option ng-repeat="rule in allRules">{{rule.name}}</option>
+			</select>
+			<div ng-show="editDetailForm.status.$invalid">
+				<p class="help-block" ng-show="editDetailForm.status.$error.required">This field is required.</p>
 			</div>
 		</div>
-	</form>
-	<label>Comments</label>
-	<textarea class="form-control" rows="22" ng-model="comments" readonly></textarea>
+		<div class="form-group">
+			<label>Partner Type</label>
+			<select ng-model="plan.partnerType" class="form-control" ng-init="plan.partnerType = 'ISV'" required>
+				<option>ISV</option>
+				<option>Reseller</option>
+				<option>Distributor</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Region</label>
+			<select ng-model="plan.region" class="form-control" ng-init="plan.region = 'VIC'" required>
+				<option>VIC</option>
+				<option>NSW</option>
+				<option>ACT</option>
+				<option>TAS</option>
+				<option>WA</option>
+				<option>SA</option>
+				<option>NT</option>
+			</select>
+		</div>
+		<div class="form-group">
+
+			<label>IBM Brand</label>
+			<select ng-model="plan.brand" class="form-control" ng-init="plan.brand = 'Other'" required>
+				<option>Websphere</option>
+				<option>Tivoli</option>
+				<option>Rational</option>
+				<option>Lotus</option>
+				<option>Information Management</option>
+				<option>Other</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Size Of Pipeline</label>
+			<input type="number" class="form-control" value="{{plan.revenueCommitment * 3}}" readonly />
+		</div>
+		<div class="form-group">
+			<label>Revenue Booked Till</label>
+			<input type="number" name="revenueBooked" class="form-control" ng-model="plan.revenueBooked" />
+			<div ng-show="editDetailForm.revenueBooked.$invalid">
+				<p class="help-block" ng-show="editDetailForm.revenueBooked.$error.number">This field should be a number.</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>% of Revenue achieved</label>
+			<input type="number" class="form-control" readonly />
+		</div>
+		<div class="form-group">
+			<label>Target Customers</label>
+			<input type="text" class="form-control" value="Telco1, Telco2, Telco3" />
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+			<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+		</button>
+		<button type="submit" ng-disabled="editForm.$invalid || editDetailForm.$invalid || isSaving" class="btn btn-primary">
+			<span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+		</button>
+	</div>
+
+</form>
+</uib-tab> <uib-tab heading="Comments">
+<div class="modal-body">
+	<div class="form-group">
+		<label>New Comment</label>
+		<p class="input-group">
+			<input type="text" class="form-control" ng-model="comment.comment" />
+			<span class="input-group-btn">
+				<button type="submit" class="btn btn-default" ng-click="newComment()">
+					<i class="glyphicon glyphicon-save"></i>
+				</button>
+			</span>
+		</p>
+	</div>
+	<div class="form-group">
+		<label>Comments</label>
+		<textarea class="form-control" rows="22" ng-model="plan.comments" readonly></textarea>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+		<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+	</button>
+	<button type="submit" ng-disabled="editForm.$invalid || editDetailForm.$invalid || isSaving" class="btn btn-primary" ng-click="save()">
+		<span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+	</button>
 </div>
 </uib-tab> <uib-tab heading="Analysis">
 <div class="modal-body">
 
-	<canvas id="pie" height="50%" class="chart chart-pie"
-		chart-data="c3_data" chart-legend="true" chart-labels="c3_labels"
+	<canvas id="pie" height="50%" class="chart chart-pie" chart-data="c3_data" chart-legend="true" chart-labels="c3_labels"
 		chart-series="c3_series">>
 			</canvas>
-	<canvas id="bar" height="50%" class="chart chart-bar"
-		chart-data="c2_data" chart-legend="true" chart-labels="c2_labels"
+	<canvas id="bar" height="50%" class="chart chart-bar" chart-data="c2_data" chart-legend="true" chart-labels="c2_labels"
 		chart-series="c2_series">
 			</canvas>
-	<canvas height="50%" id="line" class="chart chart-line"
-		chart-data="c1_data" chart-labels="c1_labels" chart-legend="true"
-		chart-series="c1_series" chart-click="c1_onClick">
+	<canvas height="50%" id="line" class="chart chart-line" chart-data="c1_data" chart-labels="c1_labels"
+		chart-legend="true" chart-series="c1_series" chart-click="c1_onClick">
 			</canvas>
 </div>
 
 </uib-tab> <uib-tab heading="History">
 <div class="modal-body">
 	<label>Updates</label>
-	<textarea class="form-control" rows="25" ng-model="history" readonly></textarea>
+	<textarea class="form-control" rows="25" ng-model="plan.history" readonly></textarea>
 </div>
 </uib-tab> </uib-tabset>

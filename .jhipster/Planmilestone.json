@@ -1,0 +1,28 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "planmilestonelink",
+            "otherEntityName": "plan",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "no",
+            "otherEntityName": "asdf",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "asd"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "milestoneDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20151210045946",
+    "dto": "no",
+    "pagination": "pagination"
+}
