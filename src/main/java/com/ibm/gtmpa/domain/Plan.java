@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -153,6 +155,19 @@ public class Plan implements Serializable {
 	@NotNull
 	@Column(name = "agreed_gtmdate", nullable = false)
 	private LocalDate agreedGTMDate;
+
+	@NotNull
+	@Column(name = "creation_date", nullable = false)
+
+	private LocalDate creationDate;
+
+	public LocalDate getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(LocalDate creationDate) {
+		this.creationDate = creationDate;
+	}
 
 	@NotNull
 	@Column(name = "revenue_commitment", nullable = false)
@@ -383,8 +398,6 @@ public class Plan implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Plan{" + "id=" + id + ", solutionName='" + solutionName + "'" + ", agreedGTMDate='" + agreedGTMDate
-				+ "'" + ", revenueCommitment='" + revenueCommitment + "'" + ", dealsRequired='" + dealsRequired + "'"
-				+ ", proposalDate='" + proposalDate + "'" + ", industrySegment='" + industrySegment + "'" + '}';
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 }

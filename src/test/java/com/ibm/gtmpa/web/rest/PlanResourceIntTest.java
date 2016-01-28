@@ -107,6 +107,7 @@ public class PlanResourceIntTest {
 		plan.setDealsRequired(DEFAULT_DEALS_REQUIRED);
 		plan.setProposalDate(DEFAULT_PROPOSAL_DATE);
 		plan.setIndustrySegment(DEFAULT_INDUSTRY_SEGMENT);
+		plan.setCreationDate(LocalDate.now(ZoneId.systemDefault()));
 	}
 
 	@Test

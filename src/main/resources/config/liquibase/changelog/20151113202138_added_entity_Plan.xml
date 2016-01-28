@@ -27,6 +27,9 @@
             <column name="agreed_gtmdate" type="date">
                 <constraints nullable="false" />
             </column>
+            <column name="creation_date" type="date">
+                <constraints nullable="false" />
+            </column>
             <column name="revenue_commitment" type="${floatType}">
                 <constraints nullable="false" />
             </column>
