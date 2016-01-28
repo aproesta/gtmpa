@@ -30,6 +30,9 @@
             <column name="revenue_commitment" type="${floatType}">
                 <constraints nullable="false" />
             </column>
+            <column name="revenue_booked" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
             <column name="deals_required" type="integer">
                 <constraints nullable="false" />
             </column>
@@ -38,6 +41,27 @@
             </column>
             <column name="industry_segment" type="varchar(255)">
                 <constraints nullable="false" />
+            </column>
+            <column name="region" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="partner_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="brand" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>            
+            <column name="comments" type="clob">
+                <constraints nullable="true" />
+            </column>
+            <column name="history" type="clob">
+                <constraints nullable="true" />
             </column>
             <column name="partner_id" type="bigint"/>
         </createTable>

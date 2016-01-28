@@ -33,6 +33,52 @@ public class PlanMilestoneManager {
 		return rule;
 	}
 
+	public Rule getRuleByID(Long id) {
+		return map.get(id);
+	}
+
+	public List<Rule> getValidStates(String currentState) {
+		assert(currentState != null);
+		
+		List<Rule> rules = new ArrayList<Rule>();
+
+		Rule currentStateRule = getRuleByName(currentState);
+		Rule backRule = getBackState(currentState);
+		Rule forwardRule = getNextState(currentState);
+		Rule invalidRule = getRuleByName(Plan.INVALID_STATUS);
+
+		if (backRule != null && !rules.contains(backRule)) {
+			rules.add(backRule);
+		}
+		
+		if (currentStateRule != null && !rules.contains(currentStateRule)) {
+			rules.add(currentStateRule);
+		}
+
+		if (forwardRule != null && !rules.contains(forwardRule)) {
+			rules.add(forwardRule);
+		}
+
+		// Add Invalid
+		if (invalidRule != null && !rules.contains(invalidRule)) {
+			rules.add(invalidRule);
+		}
+
+		return rules;
+	}
+
+	public Rule getBackState(String currentState) {
+		Rule backRule = null;
+		Rule currentStateRule = getRuleByName(currentState);
+		if (currentStateRule != null) {
+			String backState = currentStateRule.getBackState();
+			if (NumberUtils.isNumber(backState)) {
+				backRule = map.get(new Long(backState));
+			}
+		}
+		return backRule;
+	}
+
 	public Rule getNextState(String currentState) {
 		Rule nextRule = null;
 		Rule currentStateRule = getRuleByName(currentState);
