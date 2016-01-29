@@ -1,26 +1,35 @@
 package com.ibm.gtmpa.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.ibm.gtmpa.domain.Rule;
-import com.ibm.gtmpa.repository.RuleRepository;
-import com.ibm.gtmpa.web.rest.util.HeaderUtil;
-import com.ibm.gtmpa.web.rest.util.PaginationUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
+
+import javax.inject.Inject;
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
+import com.codahale.metrics.annotation.Timed;
+import com.ibm.gtmpa.domain.PlanMilestoneManager;
+import com.ibm.gtmpa.domain.Rule;
+import com.ibm.gtmpa.repository.RuleRepository;
+import com.ibm.gtmpa.web.rest.util.HeaderUtil;
+import com.ibm.gtmpa.web.rest.util.PaginationUtil;
 
 /**
  * REST controller for managing Rule.
@@ -73,16 +82,26 @@ public class RuleResource {
     /**
      * GET  /rules -> get all the rules.
      */
-    @RequestMapping(value = "/rules",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<List<Rule>> getAllRules(Pageable pageable)
-        throws URISyntaxException {
-        Page<Rule> page = ruleRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/rules");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
+	@RequestMapping(value = "/rules", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<List<Rule>> getAllRules(
+			@RequestParam(value = "currentState", required = false) String currentState, Pageable pageable)
+					throws URISyntaxException {
+
+		Page<Rule> page = null;
+
+		if (currentState != null) {
+			List<Rule> rules = ruleRepository.findAll();
+			PlanMilestoneManager pmm = new PlanMilestoneManager(rules);
+			rules = pmm.getValidStates(currentState);
+			page = new PageImpl<Rule>(rules);
+		} else {
+			page = ruleRepository.findAll(pageable);
+		}
+
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/rules");
+		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+	}
 
     /**
      * GET  /rules/:id -> get the "id" rule.
